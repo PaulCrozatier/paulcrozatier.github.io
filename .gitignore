@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# Fichiers qui ne doivent JAMAIS entrer dans ce depot public.
+# Le .gitignore est un filet, pas une garantie : les fichiers reellement
+# sensibles sont conserves en dehors de l'arbre de travail.
+# ---------------------------------------------------------------------------
+
+# Noms reels, produits pour le controle de non-collision puis supprimes
+noms_reels.txt
+
+# Dumps et bases
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+data_raw/
+
+# Secrets et environnement R
+.Renviron
+.Renviron.*
+.Rprofile.local
+
+# Etat de session R
+.Rhistory
+.RData
+.RDataTmp
+.Ruserdata
+.Rproj.user/
+
+# renv : le lock est versionne, pas la bibliotheque
+renv/library/
+renv/local/
+renv/staging/
+renv/python/
+renv/sandbox/
+
+# Deploiement (peut contenir des identifiants de compte)
+rsconnect/
+
+# Sorties temporaires produites a la racine par l'application
+/*.xlsx
+/*.gpx
+
+# Systeme
+.DS_Store
+Thumbs.db
