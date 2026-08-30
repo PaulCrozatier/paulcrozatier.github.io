@@ -1,0 +1,18 @@
+=============================================================
+ CONTROLE DE CONFORMITE — jeu de donnees de demonstration
+=============================================================
+
+  OK     C1 Aucun champ hors liste blanche
+  OK     C2 Aucun nom de champ banni dans le JSON
+  OK     C3 Aucun motif de donnee personnelle dans les valeurs
+  OK     C4 Aucun texte libre hors les noms
+  OK     C5 Noms uniques, assembles, sans civilite ni forme juridique
+  OK     C6 Toutes les coordonnees dans l'emprise francilienne
+  OK     C7 Le code de l'application ne reference aucun champ banni
+  OK     C8 Aucun secret ni connexion base dans le code publie
+  OK     C9 Aucun nom genere ne coincide avec un nom reel (1613 references)
+
+-------------------------------------------------------------
+ 9 OK   |   0 ECHEC   |   0 NON EXEC
+ VERDICT : PUBLIABLE. Tous les controles sont passes.
+-------------------------------------------------------------
