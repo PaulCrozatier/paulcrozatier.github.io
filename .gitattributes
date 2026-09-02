@@ -1,0 +1,18 @@
+# Le dossier demo/ est un artefact de compilation WebAssembly : aucune
+# normalisation de fins de ligne, pour que les fichiers servis soient
+# bit a bit ceux produits par shinylive::export().
+demo/** -text
+
+# Donnees et binaires : jamais de conversion.
+*.rds   binary
+*.png   binary
+*.tgz   binary
+*.wasm  binary
+*.data  binary
+*.gz    binary
+
+# Sources : fins de ligne normalisees dans le depot.
+*.R     text eol=lf
+*.html  text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf

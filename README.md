@@ -1,4 +1,19 @@
-# Carte AMAP Île-de-France — version de démonstration
+# Portfolio — Paul Crozatier
+
+Site personnel et démonstration d'une application cartographique R/Shiny.
+
+- **Portfolio** → [paulcrozatier.github.io](https://paulcrozatier.github.io)
+- **Démonstration jouable** → [paulcrozatier.github.io/demo/](https://paulcrozatier.github.io/demo/)
+- **Code de l'application** → dossier [`app/`](app/)
+
+L'application tourne **entièrement dans le navigateur**, compilée en WebAssembly via
+[shinylive](https://posit-dev.github.io/r-shinylive/). Aucun serveur R n'est nécessaire.
+Le premier chargement télécharge le moteur R et ses paquets (~150 Mo) et prend de trente
+secondes à deux minutes selon la connexion ; les suivants sont mis en cache par le navigateur.
+
+---
+
+## L'application
 
 > **Jeu de données fictif.** Les AMAP et fermes affichées sont entièrement générées et n'existent pas.
 > Aucune donnée réelle du réseau n'est publiée. L'interface, les filtres, la typologie de zonage,
@@ -103,19 +118,28 @@ service public OSRM ; ouverture dans Google Maps ; export GPX compatible OsmAnd 
 **Exports** — tableur multi-feuilles (openxlsx) et image PNG en A5, A4 ou A3 avec échelle, flèche
 nord et légende. La mention « jeu de données fictif » voyage avec chaque fichier téléchargé.
 
-## Lancer l'application
+## Lancer l'application en local
 
 ```bash
-Rscript -e "shiny::runApp('.', port = 4321, launch.browser = TRUE)"
+Rscript -e "shiny::runApp('app', port = 4321, launch.browser = TRUE)"
 ```
 
 Dépendances : `shiny`, `sf`, `dplyr`, `tidyr`, `leaflet`, `openxlsx`, `here`, `httr`, `jsonlite`,
-`ggplot2`, `ggspatial`, `cowplot`. L'environnement exact est figé dans `renv.lock`.
+`ggplot2`, `ggspatial`, `cowplot`. L'environnement exact est figé dans `app/renv.lock`.
+
+## Régénérer l'export WebAssembly
+
+```bash
+Rscript -e "shinylive::export('app', 'demo')"
+```
+
+Le dossier `demo/` est versionné : le site est ainsi servi tel quel par GitHub Pages, sans
+étape de construction. Il pèse environ 150 Mo, dont 70 paquets R compilés en WebAssembly.
 
 ## Régénérer les données
 
 ```bash
-Rscript R/generer_donnees_demo.R
+cd app && Rscript R/generer_donnees_demo.R
 ```
 
 Le générateur part d'une **graine fixe** : deux exécutions produisent un fichier identique à
@@ -137,10 +161,11 @@ lieu.**
 ## Contrôle de conformité
 
 ```bash
-Rscript R/verifier_donnees_demo.R --noms-reels=../noms_reels.txt
+cd app && Rscript R/verifier_donnees_demo.R --noms-reels=../../noms_reels.txt
 ```
 
-Neuf contrôles bloquants, dont le résultat complet est versionné dans `verification_sortie.txt` :
+Neuf contrôles bloquants, dont le résultat complet est versionné dans
+`app/verification_sortie.txt` :
 
 | | Contrôle |
 |---|---|
@@ -167,15 +192,36 @@ l'eau Seine-Normandie (AESN)**. Elles ne contiennent aucune donnée personnelle.
 ## Structure
 
 ```
-app.R                          application Shiny
-R/02_helpers.R                 formatage des horaires
-R/03_productions.R             référentiel fermé des 23 productions
-R/04_export_image.R            export cartographique PNG
-R/generer_donnees_demo.R       générateur, graine fixe
-R/verifier_donnees_demo.R      contrôle de conformité, bloquant
-R/_disable_autoload.R          empêche Shiny de sourcer les utilitaires ci-dessus
-data/donnees_demo.json         jeu fictif
-data/*.rds                     couches géographiques publiques
-tests/testthat/                tests unitaires
-verification_sortie.txt        sortie du contrôle de conformité
+index.html                         page portfolio
+assets/apercu-carte.png            export cartographique produit par l'application
+demo/                              application compilée en WebAssembly (servie par Pages)
+app/
+├── app.R                          application Shiny
+├── .here                          ancre les chemins de `here` sur ce dossier
+├── R/02_helpers.R                 formatage des horaires
+├── R/03_productions.R             référentiel fermé des 23 productions
+├── R/04_export_image.R            export cartographique PNG
+├── R/generer_donnees_demo.R       générateur, graine fixe
+├── R/verifier_donnees_demo.R      contrôle de conformité, bloquant
+├── R/_disable_autoload.R          empêche Shiny de sourcer les utilitaires ci-dessus
+├── data/donnees_demo.json         jeu fictif
+├── data/*.rds                     couches géographiques publiques
+├── tests/testthat/                tests unitaires
+├── renv.lock                      environnement figé
+└── verification_sortie.txt        sortie du contrôle de conformité
 ```
+
+## Note technique — portage WebAssembly
+
+Deux ajustements ont été nécessaires pour que l'application tourne dans le navigateur :
+
+- **Attente d'initialisation de la carte.** Sous webR, l'observateur qui dessine les couches
+  se déclenchait avant que le widget leaflet existe : les mises à jour partaient dans le vide
+  et aucun marqueur ne s'affichait. Une garde `req(input$carte_bounds)` attend le premier
+  signal émis par la carte.
+- **Allègement de la couche des communes.** Elle pesait 8,3 Mo sur 11,2 Mo de données.
+  Simplification géométrique à 25 m et suppression de dix attributs inutilisés : **0,55 Mo**,
+  soit quinze fois moins, à nombre de communes et de départements identiques.
+
+Le calcul d'itinéraire fonctionne depuis le navigateur : le service OSRM renvoie
+`Access-Control-Allow-Origin: *`.
