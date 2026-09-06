@@ -125,7 +125,29 @@ h2 em{font-style:italic;color:var(--accent)}
 .pilier p{font-size:.95rem;color:var(--papier-doux)}
 
 /* ---------- compétences ---------- */
-.competences{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:38px;margin-top:52px}
+/* Outils : logos monochromes, teintes par masque CSS pour rester dans la
+   palette du site. Le nom n'apparait qu'au survol — et reste toujours lu par
+   les lecteurs d'ecran, opacity:0 ne le retire pas de l'arbre d'accessibilite. */
+/* Le trait de grille vient d'une ombre portee sur chaque tuile, pas d'un fond
+   de conteneur : sinon les cellules vides de la derniere rangee s'affichent
+   comme un bloc clair. */
+.outils{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:1px;
+  margin-top:46px}
+.outil{background:var(--encre);padding:26px 10px 18px;display:flex;flex-direction:column;
+  align-items:center;gap:13px;transition:background .35s;
+  box-shadow:0 0 0 1px rgba(93,122,107,.26)}
+.outil:hover{background:rgba(212,85,46,.08)}
+.marque{width:36px;height:36px;display:block;background:var(--papier-doux);
+  -webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat;
+  transition:background .35s,transform .35s cubic-bezier(.2,.7,.3,1)}
+.outil:hover .marque{background:var(--accent);transform:translateY(-4px)}
+.outil span{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--trait);text-align:center;opacity:0;transition:opacity .3s}
+.outil:hover span{opacity:1;color:var(--papier-doux)}
+/* Sans survol possible (tactile), le nom reste lisible en permanence. */
+@media(hover:none){.outil span{opacity:.8}}
+
+.competences{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:38px;margin-top:54px}
 .comp h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent);margin-bottom:17px;padding-bottom:9px;border-bottom:1px solid rgba(93,122,107,.32)}
 .comp ul{list-style:none}
@@ -247,15 +269,30 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
   <div class="enveloppe">
     <p class="etiquette">003 &nbsp;/&nbsp; Compétences</p>
     <h2>Outils et <em>méthodes</em></h2>
+    <p class="chapeau">Les outils avec lesquels je travaille au quotidien.</p>
+
+    <div class="outils">
+      <div class="outil" style="--ic:url('./assets/logos/qgis.svg')"><i class="marque"></i><span>QGIS</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/arcgis.svg')"><i class="marque"></i><span>ArcGIS Pro</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/r.svg')"><i class="marque"></i><span>R</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/rstudio.svg')"><i class="marque"></i><span>RStudio</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/python.svg')"><i class="marque"></i><span>Python</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/pandas.svg')"><i class="marque"></i><span>pandas</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/geopandas.svg')"><i class="marque"></i><span>GeoPandas</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/postgresql.svg')"><i class="marque"></i><span>PostGIS</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/leaflet.svg')"><i class="marque"></i><span>Leaflet</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/javascript.svg')"><i class="marque"></i><span>JavaScript</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/html5.svg')"><i class="marque"></i><span>HTML / CSS</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/git.svg')"><i class="marque"></i><span>Git</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/adobeillustrator.svg')"><i class="marque"></i><span>Illustrator</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/inkscape.svg')"><i class="marque"></i><span>Inkscape</span></div>
+    </div>
+
     <div class="competences">
-      <div class="comp"><h3>SIG &amp; cartographie</h3><ul>
-        <li>QGIS — avancé</li><li>ArcGIS Pro — intermédiaire</li><li>Télédétection</li><li>Sémiologie graphique</li><li>Géostatistiques</li></ul></div>
-      <div class="comp"><h3>Données &amp; analyse</h3><ul>
-        <li>R / RStudio</li><li>Python — pandas, geopandas, shapely</li><li>PostgreSQL / PostGIS</li><li>SQL — vues et modélisation</li></ul></div>
-      <div class="comp"><h3>Cartographie web</h3><ul>
-        <li>Leaflet — avancé</li><li>Shiny</li><li>JavaScript</li><li>GeoJSON</li><li>HTML / CSS</li></ul></div>
       <div class="comp"><h3>Méthodes</h3><ul>
-        <li>Conduite de besoins</li><li>Entretiens semi-directifs</li><li>Données multi-sources hétérogènes</li><li>Architecture de base de données</li><li>RGPD appliqué</li></ul></div>
+        <li>Conduite de besoins</li><li>Entretiens semi-directifs</li><li>Enquête quantitative</li><li>Données multi-sources hétérogènes</li><li>Architecture de base de données</li><li>RGPD appliqué</li></ul></div>
+      <div class="comp"><h3>Analyse spatiale</h3><ul>
+        <li>Télédétection</li><li>Géostatistiques</li><li>Sémiologie graphique</li><li>Jointures et zonages</li></ul></div>
       <div class="comp"><h3>Langues</h3><ul>
         <li>Français — natif</li><li>Anglais — courant</li><li>Espagnol — courant</li></ul></div>
     </div>
@@ -288,7 +325,15 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
         <div>
           <h3>Master 2 Géographie — parcours Géoprisme</h3>
           <p class="lieu">Université Paris 1 Panthéon-Sorbonne</p>
-          <p>Analyse spatiale et dynamiques urbaines. Licence Géographie &amp; Aménagement, Université Toulouse 2 (2020—2023). Échange universitaire au Canada.</p>
+          <p>Analyse spatiale appliquée aux dynamiques urbaines et territoriales. Traitement de données géographiques, modélisation et restitution cartographique.</p>
+        </div>
+      </article>
+      <article class="poste">
+        <div class="date">2020 — 2023</div>
+        <div>
+          <h3>Licence Géographie &amp; Aménagement</h3>
+          <p class="lieu">Université Toulouse 2 Jean Jaurès</p>
+          <p>Formation aux fondamentaux du métier, sur trois axes. <strong>Systèmes d'information géographique</strong> : acquisition, structuration et analyse de données spatiales. <strong>Télédétection</strong> : traitement d'images satellitaires, classification et analyse d'occupation du sol. <strong>Méthodes d'enquête</strong> : approche quantitative — échantillonnage, statistiques descriptives, analyse multivariée — et qualitative — entretiens semi-directifs, observation de terrain. Échange universitaire au Canada en immersion anglophone.</p>
         </div>
       </article>
     </div>

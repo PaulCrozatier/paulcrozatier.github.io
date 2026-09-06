@@ -43,3 +43,6 @@ rsconnect/
 # Systeme
 .DS_Store
 Thumbs.db
+
+# Outillage local de previsualisation, hors site
+.claude/
