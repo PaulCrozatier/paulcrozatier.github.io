@@ -28,7 +28,7 @@ Ce dépôt est une **démonstration publique**. La version de production lit une
 interne ; celle-ci lit un fichier JSON généré. Le code de la carte, des filtres et des traitements
 est le même.
 
-![Carte exportée par l'application](docs/apercu-carte.png)
+![Carte exportée par l'application](assets/apercu-carte.png)
 
 *Image produite par la fonction d'export du logiciel lui-même : bandeau, échelle, flèche nord,
 légende et zonages AAC sont générés par `R/04_export_image.R`.*
@@ -131,7 +131,21 @@ Dépendances : `shiny`, `sf`, `dplyr`, `tidyr`, `leaflet`, `openxlsx`, `here`, `
 
 ```bash
 Rscript -e "shinylive::export('app', 'demo')"
+Rscript tools/injecter_loader.R
 ```
+
+**La seconde commande n'est pas optionnelle.** `shinylive::export()` regénère
+entièrement `demo/index.html` et efface donc l'écran d'attente. Sans lui, la
+démonstration repart sur un écran blanc d'environ une minute, sans aucune
+explication — ce qu'un visiteur lit comme un lien mort. Le script est
+idempotent : le relancer sans avoir réexporté ne fait rien.
+
+Cet écran d'attente explique ce qui se passe pendant le chargement, affiche un
+compteur de secondes et un aperçu de l'application. Il disparaît dès que la
+carte est peinte. La détection se fait depuis le document parent en sondant le
+`contentDocument` de l'iframe et la disparition du `.loading-wrapper` interne
+de shinylive : l'événement `shiny:connected` ne convient pas, l'application
+s'exécutant dans une iframe que le document parent ne reçoit pas.
 
 Le dossier `demo/` est versionné : le site est ainsi servi tel quel par GitHub Pages, sans
 étape de construction. Il pèse environ 150 Mo, dont 70 paquets R compilés en WebAssembly.
@@ -193,6 +207,8 @@ l'eau Seine-Normandie (AESN)**. Elles ne contiennent aucune donnée personnelle.
 
 ```
 index.html                         page portfolio
+tools/loader.html                  ecran d'attente de la demo
+tools/injecter_loader.R            le reinjecte apres chaque export
 assets/apercu-carte.png            export cartographique produit par l'application
 demo/                              application compilée en WebAssembly (servie par Pages)
 app/
