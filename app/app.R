@@ -6,7 +6,7 @@
 # ENTIEREMENT FICTIF (data/donnees_demo.json), produit par
 # R/generer_donnees_demo.R a partir d'une graine fixe.
 #
-# Aucune donnee reelle du reseau n'est publiee. Les champs permettant de
+# Aucune donnée réelle du réseau n'est publiée. Les champs permettant de
 # reidentifier ou de contacter une structure — code postal, commune, lieu de
 # distribution, telephone, courriel, site web — sont absents de la donnee ET
 # de ce code. Ils ne peuvent donc pas reapparaitre en rebranchant une base.
@@ -72,7 +72,7 @@ if (!file.exists(chemin_donnees))
 demo <- fromJSON(chemin_donnees, simplifyDataFrame = TRUE)
 
 # Mention reprise telle quelle dans l'interface et en tete des exports.
-MENTION_DEMO <- "Jeu de donnees fictif — les entites affichees sont entierement generees. Aucune donnee reelle du reseau n'est publiee. L'interface et les traitements sont ceux de l'outil d'origine."
+MENTION_DEMO <- "Jeu de données fictif — les entités affichées sont entièrement générées. Aucune donnée réelle du réseau n'est publiée. L'interface et les traitements sont ceux de l'outil d'origine."
 
 raw_amap         <- demo$amap
 raw_fermes       <- demo$fermes
@@ -314,7 +314,7 @@ build_partenariats_normalise <- function(ids_f = NULL, ids_g = NULL) {
       id_ferme  = p$id_ferme,
       id_groupe = p$id_groupe,
       Production = unname(vapply(prod_ids, function(pid) {
-        if (is.na(pid)) return("(non precise)")
+        if (is.na(pid)) return("(non précisé)")
         lbl <- ref_produits$label[ref_produits$id == suppressWarnings(as.integer(pid))]
         if (length(lbl) == 0 || isTRUE(is.na(lbl))) "(inconnu)" else lbl
       }, character(1))),
@@ -394,11 +394,11 @@ ajouter_feuille_mention <- function(wb) {
     Avertissement = c(
       "JEU DE DONNEES FICTIF",
       "",
-      "Les AMAP et fermes de ce fichier sont entierement generees et n'existent pas.",
-      "Aucune donnee reelle du reseau n'est publiee.",
+      "Les AMAP et fermes de ce fichier sont entièrement générées et n'existent pas.",
+      "Aucune donnée réelle du réseau n'est publiée.",
       "L'interface, les traitements et le format de cet export sont ceux de l'outil d'origine.",
       "",
-      "Export produit par la version de demonstration de la Carte AMAP Ile-de-France."
+      "Export produit par la version de démonstration de la Carte AMAP Île-de-France."
     ), stringsAsFactors = FALSE))
   addStyle(wb, "Avertissement",
            createStyle(fontSize = 14, textDecoration = "bold",
@@ -428,7 +428,7 @@ generer_excel_selection <- function(fermes_vis, amap_vis, panier_data = NULL) {
       select(ID = id_groupe, Nom = nom_amap,
              Statut = statut_amap, Jour = jour, Heure = h_debut,
              Duree = duree, Adherents = nb_adh,
-             `Productions presentes` = prod_presentes_txt,
+             `Productions présentes` = prod_presentes_txt,
              `Productions absentes`  = prod_absentes_txt,
              `Fermes partenaires`,
              AAC = aac_nom, ZPA = zpa_nom, `En AAC` = typo_aac, `En ZPA` = typo_zpa)
@@ -449,7 +449,7 @@ generer_excel_selection <- function(fermes_vis, amap_vis, panier_data = NULL) {
   }
   
   # === MODIF CLAUDE (bug 2) : feuille Partenariats normalisee ===============
-  # 1 ligne = 1 partenariat = 1 production, restreinte aux entites visibles.
+  # 1 ligne = 1 partenariat = 1 production, restreinte aux entités visibles.
   ids_f_vis <- if (nrow(fermes_vis) > 0) fermes_vis$id_ferme else NULL
   ids_g_vis <- if (nrow(amap_vis)   > 0) amap_vis$id_groupe  else NULL
   df_part <- build_partenariats_normalise(ids_f = ids_f_vis, ids_g = ids_g_vis)
@@ -459,7 +459,7 @@ generer_excel_selection <- function(fermes_vis, amap_vis, panier_data = NULL) {
   }
   # === FIN MODIF (bug 2) ====================================================
   
-  # === MODIF CLAUDE (panier) : feuille "Selection" des entites isolees =======
+  # === MODIF CLAUDE (panier) : feuille "Selection" des entités isolees =======
   if (!is.null(panier_data) && length(panier_data) > 0) {
     ids_pf <- vapply(panier_data, function(x) if (x$type == "ferme") x$id else NA_character_, character(1))
     ids_pa <- vapply(panier_data, function(x) if (x$type == "amap")  x$id else NA_character_, character(1))
@@ -506,15 +506,15 @@ generer_excel_requete <- function(params, amap_avec, amap_sans, fermes_res, lign
   ajouter_feuille_mention(wb)
   addWorksheet(wb, "Requete")
   df_req <- data.frame(
-    Parametre = c("Type d'ancrage", "Nom du point de depart", "Localisation",
-                  "Production recherchee", "Rayon (km)",
+    Parametre = c("Type d'ancrage", "Nom du point de départ", "Localisation",
+                  "Production recherchée", "Rayon (km)",
                   "Rayon mutualisation (km)", "Date"),
     Valeur    = c(params$type, params$nom, params$loc, params$prod, params$rayon,
                   params$rayon_mut %||% 0, format(Sys.Date(), "%d/%m/%Y"))
   )
   writeDataTable(wb, "Requete", df_req, tableStyle = "TableStyleMedium1")
   
-  # === MODIF CLAUDE (typo AESN) : feuille Synthese AESN =======================
+  # === MODIF CLAUDE (typo AESN) : feuille Synthèse AESN =======================
   # Compteurs de volume sur le perimetre de la requete (entites affichees).
   ids_f_res <- if (!is.null(fermes_res) && nrow(fermes_res) > 0) fermes_res$id_ferme else character(0)
   ids_a_res <- unique(c(
@@ -524,8 +524,8 @@ generer_excel_requete <- function(params, amap_avec, amap_sans, fermes_res, lign
   f_res <- fermes %>% filter(id_ferme %in% ids_f_res)
   a_res <- amap   %>% filter(id_groupe %in% ids_a_res)
   syn <- data.frame(
-    Indicateur = c("Fermes (total requete)", "Fermes en AAC", "Fermes en ZPA",
-                   "AMAP (total requete)", "AMAP liees a une ferme AAC", "AMAP liees a une ferme ZPA",
+    Indicateur = c("Fermes (total requête)", "Fermes en AAC", "Fermes en ZPA",
+                   "AMAP (total requête)", "AMAP liées à une ferme AAC", "AMAP liées à une ferme ZPA",
                    "Volume AESN AAC (fermes + AMAP)", "Volume AESN ZPA (fermes + AMAP)"),
     Valeur = c(
       nrow(f_res),
@@ -538,8 +538,8 @@ generer_excel_requete <- function(params, amap_avec, amap_sans, fermes_res, lign
       sum(f_res$typo_zpa == "oui", na.rm = TRUE) + sum(a_res$typo_zpa == "oui", na.rm = TRUE)
     )
   )
-  addWorksheet(wb, "Synthese AESN")
-  writeDataTable(wb, "Synthese AESN", syn, tableStyle = "TableStyleMedium7")
+  addWorksheet(wb, "Synthèse AESN")
+  writeDataTable(wb, "Synthèse AESN", syn, tableStyle = "TableStyleMedium7")
   # === FIN MODIF (typo AESN) ==================================================
   
   get_fermes_de_amap <- function(id_g) {
@@ -570,7 +570,7 @@ generer_excel_requete <- function(params, amap_avec, amap_sans, fermes_res, lign
       select(ID = id_groupe, Nom = nom_amap,
              Statut = statut_amap, Jour = jour, Heure = h_debut,
              Duree = duree, Adherents = nb_adh,
-             `Productions presentes` = prod_presentes_txt,
+             `Productions présentes` = prod_presentes_txt,
              `Fermes fournissant cette prod`,
              AAC = aac_nom, ZPA = zpa_nom, `En AAC` = typo_aac, `En ZPA` = typo_zpa)
     addWorksheet(wb, "AMAP avec production")
@@ -582,7 +582,7 @@ generer_excel_requete <- function(params, amap_avec, amap_sans, fermes_res, lign
       select(ID = id_groupe, Nom = nom_amap,
              Statut = statut_amap, Jour = jour, Heure = h_debut,
              Duree = duree, Adherents = nb_adh,
-             `Productions presentes` = prod_presentes_txt,
+             `Productions présentes` = prod_presentes_txt,
              `Partenaires actuels (toutes prod)`,
              AAC = aac_nom, ZPA = zpa_nom, `En AAC` = typo_aac, `En ZPA` = typo_zpa)
     addWorksheet(wb, "AMAP sans production")
@@ -725,18 +725,18 @@ html.shiny-busy #busy_overlay{display:flex;}
 ui <- fluidPage(
   tags$head(
     tags$meta(name = "viewport", content = "width=device-width,initial-scale=1"),
-    tags$title("Carte AMAP Ile-de-France — demonstration"),
+    tags$title("Carte AMAP Île-de-France — démonstration"),
     tags$style(HTML(css_app))
   ),
 
   # Cartouche permanent en haut de l'interface.
-  tags$div(id = "bandeau_demo", "JEU DE DONNEES FICTIF — demonstration de portfolio"),
+  tags$div(id = "bandeau_demo", "JEU DE DONNÉES FICTIF — démonstration de portfolio"),
 
   leafletOutput("carte", width = "100%", height = "100vh"),
   
   tags$div(id = "panel_left",
            tags$div(id = "panel_header",
-                    tags$h2("AMAP Ile-de-France — demonstration")
+                    tags$h2("AMAP Île-de-France — démonstration")
            ),
            tags$div(id = "panel_body",
                     
@@ -764,10 +764,10 @@ ui <- fluidPage(
                                                            choices = c("AMAP" = "amap", "Ferme" = "ferme"),
                                                            selected = "amap", inline = TRUE)
                                      ),
-                                     tags$div(class = "stitle", "2. Methode de selection"),
+                                     tags$div(class = "stitle", "2. Méthode de sélection"),
                                      tags$div(class = "fg",
                                               radioButtons("match_methode", NULL,
-                                                           choices = c("Entite existante" = "exist", "Point libre (clic carte)" = "libre"),
+                                                           choices = c("Entité existante" = "exist", "Point libre (clic carte)" = "libre"),
                                                            selected = "exist", inline = FALSE)
                                      ),
                                      conditionalPanel(condition = "input.match_methode == 'exist'",
@@ -775,7 +775,7 @@ ui <- fluidPage(
                                                                selectInput("match_entite", "Selectionner", choices = NULL, selected = NULL)
                                                       )
                                      ),
-                                     tags$div(class = "stitle", "3. Partenariat recherche"),
+                                     tags$div(class = "stitle", "3. Partenariat recherché"),
                                      tags$div(class = "fg",
                                               selectInput("match_prod", "Production",
                                                           choices  = setNames(as.character(ref_produits$id), ref_produits$label),
@@ -797,7 +797,7 @@ ui <- fluidPage(
                                      tags$div(class = "fg",
                                               tags$label("Rayon de mutualisation (km)"),
                                               tags$div(style = "font-size:10px;color:#777;margin-bottom:4px;",
-                                                       "Affiche autour de chaque ferme partenaire actuelle un cercle pour identifier des opportunites de mutualisation de tournee. Mettre 0 pour desactiver."),
+                                                       "Affiche autour de chaque ferme partenaire actuelle un cercle pour identifier des opportunités de mutualisation de tournée. Mettre 0 pour désactiver."),
                                               numericInput("match_rayon_mut", NULL, value = 0, min = 0, max = 50)
                                      ),
                                      tags$div(class = "stitle", "6. Actions"),
@@ -811,36 +811,36 @@ ui <- fluidPage(
                                                  onclick = "Shiny.setInputValue('match_reset',Math.random(),{priority:'event'})",
                                                  "Quitter la recherche"),
                                      tags$div(id = "compteur_box_match", textOutput("compteur_match")),
-                                     downloadButton("dl_match", "Exporter les resultats (Excel)", class = "btn_exp"),
+                                     downloadButton("dl_match", "Exporter les résultats (Excel)", class = "btn_exp"),
                                      tags$button(id = "btn_export_img_match", class = "btn_exp",
                                                  onclick = "Shiny.setInputValue('open_export_modal','match',{priority:'event'})",
                                                  "Exporter en image"),
                                      
-                                     tags$div(class = "stitle", "Recherches sauvegardees"),
+                                     tags$div(class = "stitle", "Recherches sauvegardées"),
                                      uiOutput("match_tabs_ui"),
                                      
                                      tags$div(class = "stitle", "Itineraire"),
                                      tags$div(class = "fg",
                                               radioButtons("itin_mode", NULL,
-                                                           choices = c("Direct (vers une entite cliquee)" = "direct",
-                                                                       "Tournee (par toutes les entites)" = "tournee",
-                                                                       "Etapes choisies (clic sur la carte)" = "etapes"),
+                                                           choices = c("Direct (vers une entité cliquée)" = "direct",
+                                                                       "Tournée (par toutes les entités)" = "tournee",
+                                                                       "Étapes choisies (clic sur la carte)" = "etapes"),
                                                            selected = "direct", inline = FALSE)
                                      ),
                                      # === MODIF CLAUDE (bug 8) : selection manuelle des etapes ==============
                                      conditionalPanel(
                                        condition = "input.itin_mode == 'etapes'",
                                        tags$div(style = "font-size:10px;color:#777;margin-bottom:4px;",
-                                                "Activez la selection, puis cliquez les entites a inclure dans l'ordre. Re-cliquer une etape la retire."),
+                                                "Activez la sélection, puis cliquez les entités à inclure dans l'ordre. Re-cliquer une étape la retire."),
                                        tags$button(id = "itin_select_toggle", class = "btn_exp",
                                                    onclick = "Shiny.setInputValue('itin_select_toggle',Math.random(),{priority:'event'})",
-                                                   "Activer / desactiver la selection"),
+                                                   "Activer / désactiver la sélection"),
                                        uiOutput("itin_waypoints_ui")
                                      ),
                                      # === FIN MODIF (bug 8) =================================================
                                      tags$button(id = "itin_run", class = "btn_action",
                                                  onclick = "Shiny.setInputValue('itin_run',Math.random(),{priority:'event'})",
-                                                 "Calculer l'itineraire"),
+                                                 "Calculer l'itinéraire"),
                                      tags$button(id = "itin_clear", class = "btn_exp",
                                                  onclick = "Shiny.setInputValue('itin_clear',Math.random(),{priority:'event'})",
                                                  "Effacer"),
@@ -848,7 +848,7 @@ ui <- fluidPage(
                                      # === MODIF CLAUDE (GPX) : telechargement itineraire au format GPX ======
                                      conditionalPanel(
                                        condition = "output.itin_has_result",
-                                       downloadButton("dl_gpx", "Telecharger l'itineraire (GPX)", class = "btn_exp")
+                                       downloadButton("dl_gpx", "Télécharger l'itinéraire (GPX)", class = "btn_exp")
                                      ),
                                      # === FIN MODIF (GPX) ===================================================
                                      tags$div(id = "itin_info_box", uiOutput("itin_info"))
@@ -877,17 +877,17 @@ ui <- fluidPage(
                                      conditionalPanel(
                                        condition = "input.show_aac || input.show_zpa",
                                        tags$div(id = "compteur_box", textOutput("compteur_aesn")),
-                                       # === MODIF CLAUDE (clip) : par defaut, seules les entites concernees ==
+                                       # === MODIF CLAUDE (clip) : par defaut, seules les entités concernees ==
                                        # s'affichent. Cocher "afficher le reste" reaffiche les autres en gris.
                                        tags$div(class = "fg",
-                                                checkboxInput("aesn_show_reste", "Afficher aussi le reste du reseau (en gris)", value = FALSE)
+                                                checkboxInput("aesn_show_reste", "Afficher aussi le reste du réseau (en gris)", value = FALSE)
                                        )
                                      ),
                                      # === FIN MODIF (passe B2) =============================================
                                      tags$div(class = "stitle", "Filtres"),
                                      # === MODIF CLAUDE (filtre territorial) : multi-selection ===============
                                      tags$div(class = "fg",
-                                              selectInput("filtre_dep", "Departement(s)",
+                                              selectInput("filtre_dep", "Département(s)",
                                                           choices = setNames(deps_dispo, deps_dispo),
                                                           selected = NULL, multiple = TRUE)
                                      ),
@@ -907,7 +907,7 @@ ui <- fluidPage(
                                      tags$div(class = "fg",
                                               selectInput("filtre_statut", "Statut AMAP",
                                                           choices  = c("Tous" = "tous", "Fonctionne" = "fonctionne", "Complet" = "complet",
-                                                                       "En creation" = "creation", "Inactif" = "inactif"),
+                                                                       "En création" = "creation", "Inactif" = "inactif"),
                                                           selected = "tous")
                                      ),
                                      tags$div(class = "fg",
@@ -916,7 +916,7 @@ ui <- fluidPage(
                                                           selected = "tous")
                                      ),
                                      tags$div(class = "fg",
-                                              selectInput("filtre_prod", "Production presente",
+                                              selectInput("filtre_prod", "Production présente",
                                                           choices  = c("Toutes" = "toutes",
                                                                        setNames(as.character(ref_produits$id), ref_produits$label)),
                                                           selected = "toutes")
@@ -942,16 +942,16 @@ ui <- fluidPage(
                                      # === FIN MODIF (bug 3) ==================================================
                                      tags$div(id = "compteur_box", textOutput("compteur")),
                                      # === MODIF CLAUDE (panier) : selection manuelle d'entites =============
-                                     tags$div(class = "stitle", "Selection manuelle"),
+                                     tags$div(class = "stitle", "Sélection manuelle"),
                                      tags$div(style = "font-size:10px;color:#777;margin-bottom:4px;",
-                                              "Isolez des AMAP/fermes (perte d'adhesion, recherche de paniers...). Activez puis cliquez les entites."),
+                                              "Isolez des AMAP/fermes (perte d'adhésion, recherche de paniers...). Activez puis cliquez les entités."),
                                      tags$button(id = "panier_toggle", class = "btn_exp",
                                                  onclick = "Shiny.setInputValue('panier_toggle',Math.random(),{priority:'event'})",
-                                                 "Activer / desactiver la selection"),
+                                                 "Activer / désactiver la sélection"),
                                      uiOutput("panier_ui"),
                                      # === FIN MODIF (panier) ===============================================
                                      tags$div(class = "stitle", "Export"),
-                                     downloadButton("dl_sel", "Exporter la selection (Excel)", class = "btn_exp"),
+                                     downloadButton("dl_sel", "Exporter la sélection (Excel)", class = "btn_exp"),
                                      tags$button(id = "btn_export_img_explo", class = "btn_exp",
                                                  onclick = "Shiny.setInputValue('open_export_modal','explo',{priority:'event'})",
                                                  "Exporter en image"),
@@ -987,11 +987,11 @@ ui <- fluidPage(
   # Pied de page permanent. Ce n'est pas un avertissement juridique : c'est la
   # demonstration que le probleme a ete traite par construction.
   tags$div(id = "pied_demo",
-           tags$b("Demonstration. "),
-           "Les AMAP et fermes affichees sont ", tags$b("entierement generees"),
-           " et n'existent pas. Aucune donnee reelle du reseau n'est publiee. ",
+           tags$b("Démonstration. "),
+           "Les AMAP et fermes affichées sont ", tags$b("entièrement générées"),
+           " et n'existent pas. Aucune donnée réelle du réseau n'est publiée. ",
            "L'interface, les filtres, la typologie de zonage, les calculs ",
-           "d'itineraire et les exports sont ceux de l'outil d'origine."),
+           "d'itinéraire et les exports sont ceux de l'outil d'origine."),
   # === MODIF CLAUDE (chargement) : indicateur visible pendant les calculs =====
   tags$div(id = "busy_overlay", tags$span(class = "spin"), tags$span("Calcul en cours...")),
   # === FIN MODIF (chargement) ================================================
@@ -1016,25 +1016,25 @@ ui <- fluidPage(
   tags$div(id = "popup_overlay",
            style = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:center;justify-content:center;",
            tags$div(style = "background:white;border-radius:10px;padding:28px 32px;max-width:480px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.2);",
-                    tags$h2("Carte AMAP Ile-de-France — version de demonstration",
+                    tags$h2("Carte AMAP Île-de-France — version de démonstration",
                             style = "color:#2d5016;font-size:17px;margin-bottom:16px;"),
-                    tags$p(tags$b("Jeu de donnees fictif."),
-                           " Les AMAP et fermes affichees sont entierement generees et n'existent pas.",
-                           " Aucune donnee reelle du reseau n'est publiee. L'interface et les traitements",
-                           " sont ceux de l'outil d'origine, developpe en stage de fin d'etudes.",
+                    tags$p(tags$b("Jeu de données fictif."),
+                           " Les AMAP et fermes affichées sont entièrement générées et n'existent pas.",
+                           " Aucune donnée réelle du réseau n'est publiée. L'interface et les traitements",
+                           " sont ceux de l'outil d'origine, développé en stage de fin d'études.",
                            style = "font-size:13px;color:#5b4b8a;margin-bottom:12px;background:#f2effa;padding:8px 10px;border-radius:6px;"),
-                    tags$p("Cet outil permet d'explorer un reseau d'AMAP et de fermes partenaires en Ile-de-France.",
+                    tags$p("Cet outil permet d'explorer un réseau d'AMAP et de fermes partenaires en Île-de-France.",
                            style = "font-size:13px;color:#444;margin-bottom:12px;"),
                     tags$ul(style = "font-size:12px;color:#444;padding-left:18px;line-height:2;",
-                            tags$li("Mode Exploration : filtrer et naviguer dans le reseau"),
+                            tags$li("Mode Exploration : filtrer et naviguer dans le réseau"),
                             tags$li("Mode Mise en relation : trouver des partenaires potentiels"),
-                            tags$li("Cliquez sur un marqueur pour voir le detail"),
+                            tags$li("Cliquez sur un marqueur pour voir le détail"),
                             tags$li("Exportez votre selection en Excel"),
                             # === MODIF CLAUDE (bug 5) : indication legende ========================
                             # NB : la legende s'affiche en bas a droite. C'est le panneau de DETAIL
                             # (a droite) qui peut la masquer quand il est ouvert -> le fermer (croix)
                             # la fait reapparaitre. A valider avec Paul (sa consigne disait "gauche").
-                            tags$li(tags$b("Astuce : "), "en mode Mise en relation, la legende apparait en bas a droite de la carte. Si le panneau de detail (a droite) la cache, fermez-le avec la croix.")
+                            tags$li(tags$b("Astuce : "), "en mode Mise en relation, la légende apparaît en bas à droite de la carte. Si le panneau de détail (à droite) la cache, fermez-le avec la croix.")
                             # === FIN MODIF (bug 5) ================================================
                     ),
                     tags$button("Commencer",
@@ -1131,7 +1131,7 @@ server <- function(input, output, session) {
   # === MODIF CLAUDE (panier) : panier de selection manuelle ===================
   panier        <- reactiveVal(list())    # list de list(type, id, nom)
   panier_mode   <- reactiveVal(FALSE)     # TRUE = le clic marque/demarque
-  # Dessine les entites du panier en magenta, par-dessus (visible dans tous les modes)
+  # Dessine les entités du panier en magenta, par-dessus (visible dans tous les modes)
   dessiner_panier <- function(proxy) {
     p <- panier()
     if (length(p) == 0) return(invisible())
@@ -1142,14 +1142,14 @@ server <- function(input, output, session) {
       pf <- fermes_sf %>% filter(id_ferme %in% ids_pf)
       if (nrow(pf) > 0) proxy %>% addMarkers(data = pf, lng = ~lon, lat = ~lat,
                                              icon = losange_icons_op(fill = "#e6007e", border = "#000", size = 20, border_w = 1.5, opacity = 1),
-                                             label = ~paste0(nom_ferme, " (selection)"),
+                                             label = ~paste0(nom_ferme, " (sélection)"),
                                              layerId = ~paste0("panier_ferme_", id_ferme), group = "panier")
     }
     if (length(ids_pa) > 0) {
       pa <- amap_sf %>% filter(id_groupe %in% ids_pa)
       if (nrow(pa) > 0) proxy %>% addCircleMarkers(data = pa, lng = ~lon, lat = ~lat,
                                                    color = "#000", fillColor = "#e6007e", fillOpacity = 1, radius = 11, weight = 2.5,
-                                                   label = ~paste0(nom_amap, " (selection)"),
+                                                   label = ~paste0(nom_amap, " (sélection)"),
                                                    layerId = ~paste0("panier_amap_", id_groupe), group = "panier")
     }
     invisible()
@@ -1268,7 +1268,7 @@ server <- function(input, output, session) {
   
   observeEvent(input$match_save, {
     r <- match_result()
-    if (is.null(r)) { showNotification("Aucune recherche a sauvegarder", type = "warning", duration = 4); return() }
+    if (is.null(r)) { showNotification("Aucune recherche à sauvegarder", type = "warning", duration = 4); return() }
     saved <- match_saved()
     if (length(saved) >= 8) {
       showNotification("Limite de 8 recherches atteinte. Supprimez une recherche avant.", type = "warning", duration = 5); return()
@@ -1278,7 +1278,7 @@ server <- function(input, output, session) {
     new_id <- paste0("tab_", as.integer(Sys.time()), "_", sample(1000:9999, 1))
     saved[[new_id]] <- list(label = label, result = r)
     match_saved(saved); match_saved_active(new_id)
-    showNotification("Recherche sauvegardee", type = "message", duration = 3)
+    showNotification("Recherche sauvegardée", type = "message", duration = 3)
   }, ignoreInit = TRUE)
   
   observeEvent(input$match_tab_select, {
@@ -1306,7 +1306,7 @@ server <- function(input, output, session) {
   output$match_tabs_ui <- renderUI({
     saved <- match_saved(); active <- match_saved_active()
     if (length(saved) == 0) {
-      return(tags$p(style = "font-size:11px;color:#999;font-style:italic;padding:4px 0;", "Aucune recherche sauvegardee"))
+      return(tags$p(style = "font-size:11px;color:#999;font-style:italic;padding:4px 0;", "Aucune recherche sauvegardée"))
     }
     tagList(lapply(names(saved), function(id) {
       is_active <- !is.null(active) && active == id
@@ -1335,7 +1335,7 @@ server <- function(input, output, session) {
     new_mode <- !itin_select_mode()
     itin_select_mode(new_mode)
     if (new_mode)
-      session$sendCustomMessage("mode_hint_msg", list(text = "Mode etapes : cliquez les entites a inclure"))
+      session$sendCustomMessage("mode_hint_msg", list(text = "Mode étapes : cliquez les entités à inclure"))
     else
       session$sendCustomMessage("mode_hint_msg", list(text = NULL))
   }, ignoreInit = TRUE)
@@ -1353,10 +1353,10 @@ server <- function(input, output, session) {
     wp <- itin_waypoints()
     actif <- itin_select_mode()
     etat <- if (actif) tags$div(style = "font-size:11px;color:#1a7a1a;font-weight:600;margin:4px 0;",
-                                "Selection ACTIVE") else
-                                  tags$div(style = "font-size:11px;color:#999;margin:4px 0;", "Selection inactive")
+                                "Sélection ACTIVE") else
+                                  tags$div(style = "font-size:11px;color:#999;margin:4px 0;", "Sélection inactive")
     if (length(wp) == 0)
-      return(tagList(etat, tags$p(style = "font-size:11px;color:#999;font-style:italic;", "Aucune etape selectionnee")))
+      return(tagList(etat, tags$p(style = "font-size:11px;color:#999;font-style:italic;", "Aucune étape sélectionnée")))
     tagList(etat, lapply(seq_along(wp), function(i) {
       w <- wp[[i]]; key <- paste0(w$type, "_", w$id)
       tags$div(class = "match_tab",
@@ -1376,7 +1376,7 @@ server <- function(input, output, session) {
       # === MODIF CLAUDE (bug 8) : itineraire suivant les etapes choisies =======
       wp <- itin_waypoints()
       if (length(wp) == 0) {
-        showNotification("Aucune etape selectionnee. Activez la selection et cliquez des entites.", type = "warning", duration = 5); return()
+        showNotification("Aucune étape sélectionnée. Activez la sélection et cliquez des entités.", type = "warning", duration = 5); return()
       }
       pts <- lapply(wp, function(w) c(w$lon, w$lat))
       waypoints <- c(list(src), pts)   # depart = ancre, puis les etapes dans l'ordre
@@ -1384,7 +1384,7 @@ server <- function(input, output, session) {
       # === FIN MODIF (bug 8) ===================================================
     } else if (mode_itin == "direct") {
       s <- sel()
-      if (is.null(s)) { showNotification("Cliquez d'abord sur une entite cible sur la carte.", type = "warning", duration = 5); return() }
+      if (is.null(s)) { showNotification("Cliquez d'abord sur une entité cible sur la carte.", type = "warning", duration = 5); return() }
       if (s$type == "ferme") {
         f <- fermes %>% filter(id_ferme == s$id) %>% slice(1); if (nrow(f) == 0) return()
         cible <- c(f$lon, f$lat)
@@ -1403,8 +1403,8 @@ server <- function(input, output, session) {
       } else {
         pts_df <- r$amap_sans %>% st_drop_geometry() %>% select(lon, lat)
       }
-      if (nrow(pts_df) == 0) { showNotification("Aucune entite pour la tournee.", type = "warning", duration = 4); return() }
-      if (nrow(pts_df) > 50) { showNotification("Tournee limitee aux 50 premieres entites.", type = "warning", duration = 4); pts_df <- pts_df[1:50, ] }
+      if (nrow(pts_df) == 0) { showNotification("Aucune entité pour la tournée.", type = "warning", duration = 4); return() }
+      if (nrow(pts_df) > 50) { showNotification("Tournée limitée aux 50 premières entités.", type = "warning", duration = 4); pts_df <- pts_df[1:50, ] }
       waypoints <- c(list(src), lapply(seq_len(nrow(pts_df)), function(i) c(pts_df$lon[i], pts_df$lat[i])))
       endpoint <- "trip"
     }
@@ -1415,9 +1415,9 @@ server <- function(input, output, session) {
       paste0("https://router.project-osrm.org/route/v1/driving/", coords_str, "?geometries=geojson&overview=full")
     }
     tryCatch({
-      withProgress(message = "Calcul de l'itineraire...", value = 0.5, {
+      withProgress(message = "Calcul de l'itinéraire...", value = 0.5, {
         resp <- GET(url, timeout(10))
-        if (status_code(resp) != 200) { showNotification("Service d'itineraire indisponible (erreur HTTP).", type = "error", duration = 6); return() }
+        if (status_code(resp) != 200) { showNotification("Service d'itinéraire indisponible (erreur HTTP).", type = "error", duration = 6); return() }
         data_json <- fromJSON(content(resp, "text", encoding = "UTF-8"), simplifyVector = FALSE)
         if (data_json$code != "Ok") { showNotification(paste("OSRM :", data_json$code), type = "error", duration = 6); return() }
         if (endpoint == "trip") {
@@ -1432,16 +1432,16 @@ server <- function(input, output, session) {
         itin_result(list(coords = coords, dist_km = dist_km, dur_min = dur_min, waypoints = waypoints))
       })
     }, error = function(e) {
-      showNotification(paste("Erreur itineraire :", conditionMessage(e)), type = "error", duration = 8)
+      showNotification(paste("Erreur itinéraire :", conditionMessage(e)), type = "error", duration = 8)
     })
   }, ignoreInit = TRUE)
   
   output$itin_info <- renderUI({
     i <- itin_result(); if (is.null(i)) return(NULL)
     tags$div(style = "background:#e8efe2;border-radius:6px;padding:8px;margin-top:8px;font-size:12px;",
-             tags$div(style = "font-weight:600;color:#2d5016;margin-bottom:4px;", "Itineraire calcule"),
+             tags$div(style = "font-weight:600;color:#2d5016;margin-bottom:4px;", "Itinéraire calculé"),
              tags$div(sprintf("Distance : %.1f km", i$dist_km)),
-             tags$div(sprintf("Duree : %d min", round(i$dur_min))))
+             tags$div(sprintf("Durée : %d min", round(i$dur_min))))
   })
   
   output$itin_gmaps_ui <- renderUI({
@@ -1462,7 +1462,7 @@ server <- function(input, output, session) {
     filename = function() paste0("itineraire_amap_", format(Sys.Date(), "%Y%m%d"), ".gpx"),
     content  = function(file) {
       i <- itin_result()
-      if (is.null(i)) { showNotification("Aucun itineraire a exporter.", type = "warning", duration = 4); return() }
+      if (is.null(i)) { showNotification("Aucun itinéraire à exporter.", type = "warning", duration = 4); return() }
       esc <- function(x) gsub("&", "&amp;", gsub("<", "&lt;", gsub(">", "&gt;", x)))
       
       # Points d'etape (waypoints) : depart + etapes
@@ -1470,7 +1470,7 @@ server <- function(input, output, session) {
       if (!is.null(i$waypoints)) {
         for (k in seq_along(i$waypoints)) {
           w <- i$waypoints[[k]]   # c(lon, lat)
-          nom <- if (k == 1) "Depart" else paste0("Etape ", k - 1)
+          nom <- if (k == 1) "Depart" else paste0("Étape ", k - 1)
           wpts <- paste0(wpts, sprintf(
             '  <wpt lat="%f" lon="%f"><name>%s</name></wpt>\n', w[2], w[1], esc(nom)))
         }
@@ -1488,7 +1488,7 @@ server <- function(input, output, session) {
         '<gpx version="1.1" creator="Carte AMAP IDF" xmlns="http://www.topografix.com/GPX/1/1">\n',
         sprintf(paste0('  <metadata><name>Itineraire AMAP IDF (demonstration)</name>',
                        '<desc>Jeu de donnees fictif : les etapes de cet itineraire sont ',
-                       'des entites generees, aucune donnee reelle du reseau n est publiee.',
+                       'des entités generees, aucune donnee reelle du reseau n est publiee.',
                        '</desc><time>%s</time></metadata>\n'),
                 format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
         wpts,
@@ -1695,7 +1695,7 @@ server <- function(input, output, session) {
     nm <- !panier_mode()
     panier_mode(nm)
     session$sendCustomMessage("mode_hint_msg",
-                              list(text = if (nm) "Selection manuelle : cliquez les entites a isoler" else NULL))
+                              list(text = if (nm) "Sélection manuelle : cliquez les entités à isoler" else NULL))
   }, ignoreInit = TRUE)
   
   observeEvent(input$panier_remove, {
@@ -1709,14 +1709,14 @@ server <- function(input, output, session) {
   
   output$panier_ui <- renderUI({
     p <- panier(); actif <- panier_mode()
-    etat <- if (actif) tags$div(style = "font-size:11px;color:#e6007e;font-weight:600;margin:4px 0;", "Selection ACTIVE")
-    else tags$div(style = "font-size:11px;color:#999;margin:4px 0;", "Selection inactive")
+    etat <- if (actif) tags$div(style = "font-size:11px;color:#e6007e;font-weight:600;margin:4px 0;", "Sélection ACTIVE")
+    else tags$div(style = "font-size:11px;color:#999;margin:4px 0;", "Sélection inactive")
     if (length(p) == 0)
-      return(tagList(etat, tags$p(style = "font-size:11px;color:#999;font-style:italic;", "Aucune entite selectionnee")))
+      return(tagList(etat, tags$p(style = "font-size:11px;color:#999;font-style:italic;", "Aucune entité sélectionnée")))
     tagList(
       etat,
       tags$div(style = "font-size:11px;font-weight:600;color:#e6007e;margin-bottom:2px;",
-               paste0(length(p), " entite(s) selectionnee(s)")),
+               paste0(length(p), " entité(s) sélectionnée(s)")),
       lapply(p, function(w) {
         key <- paste0(w$type, "_", w$id)
         tags$div(class = "match_tab",
@@ -1726,7 +1726,7 @@ server <- function(input, output, session) {
       }),
       tags$button(class = "btn_exp", style = "margin-top:4px;",
                   onclick = "Shiny.setInputValue('panier_clear',Math.random(),{priority:'event'})",
-                  "Vider la selection")
+                  "Vider la sélection")
     )
   })
   # === FIN MODIF (panier) =====================================================
@@ -1737,11 +1737,11 @@ server <- function(input, output, session) {
   observeEvent(input$indic_total, { indic_scope("total") }, ignoreInit = TRUE)
   
   output$indicateurs_ui <- renderUI({
-    af <- amap_f(); ff <- fermes_f()   # entites passant les filtres courants
+    af <- amap_f(); ff <- fermes_f()   # entités passant les filtres courants
     scope <- indic_scope()
     
     # Mode "vue" : restreindre a l'emprise carte au moment du calcul (rectangle)
-    libelle_scope <- "Reseau filtre (total)"
+    libelle_scope <- "Réseau filtré (total)"
     if (scope == "vue") {
       b <- isolate(input$carte_bounds)
       if (!is.null(b)) {
@@ -1753,7 +1753,7 @@ server <- function(input, output, session) {
     }
     
     n_amap <- nrow(af); n_ferme <- nrow(ff)
-    # AAC / ZPA : "oui" parmi les entites du scope (fermes + AMAP)
+    # AAC / ZPA : "oui" parmi les entités du scope (fermes + AMAP)
     f_aac <- sum(ff$typo_aac == "oui", na.rm = TRUE); a_aac <- sum(af$typo_aac == "oui", na.rm = TRUE)
     f_zpa <- sum(ff$typo_zpa == "oui", na.rm = TRUE); a_zpa <- sum(af$typo_zpa == "oui", na.rm = TRUE)
     tot <- n_amap + n_ferme
@@ -1785,7 +1785,7 @@ server <- function(input, output, session) {
     if (!is.null(input$filtre_dep) && length(input$filtre_dep) > 0) {
       lab <- if (!is.null(input$filtre_com) && length(input$filtre_com) > 0)
         paste0(length(input$filtre_com), " commune(s)")
-      else paste0("Dept ", paste(input$filtre_dep, collapse = ", "))
+      else paste0("Dépt ", paste(input$filtre_dep, collapse = ", "))
       add("territoire", paste0("Territoire : ", lab))
     }
     if ((input$filtre_statut %||% "tous") != "tous")   add("filtre_statut", paste0("Statut AMAP : ", input$filtre_statut))
@@ -1801,7 +1801,7 @@ server <- function(input, output, session) {
     if (aesn_z() != "none")    add("aesn_zone", paste0("Zone : ", toupper(aesn_z())))
     rayon <- suppressWarnings(as.numeric(input$rayon_km %||% ""))
     if (!is.na(rayon) && rayon > 0)                 add("rayon", paste0("Rayon : ", rayon, " km"))
-    if (!is.null(sel()))                            add("selection", "Selection active")
+    if (!is.null(sel()))                            add("selection", "Sélection active")
     L
   })
   
@@ -1822,7 +1822,7 @@ server <- function(input, output, session) {
       tags$button(class = "btn_exp",
                   style = "background:#c0392b;color:#fff;",
                   onclick = "Shiny.setInputValue('filtres_reset',Math.random(),{priority:'event'})",
-                  "Tout reinitialiser")
+                  "Tout réinitialiser")
     )
   })
   
@@ -1878,7 +1878,7 @@ server <- function(input, output, session) {
     col <- if (z == "aac") "typo_aac" else "typo_zpa"
     nf <- sum(fermes[[col]] == "oui", na.rm = TRUE)
     na <- sum(amap[[col]]   == "oui", na.rm = TRUE)
-    paste0("Volume ", toupper(z), " : ", nf, " fermes + ", na, " AMAP = ", nf + na, " entites")
+    paste0("Volume ", toupper(z), " : ", nf, " fermes + ", na, " AMAP = ", nf + na, " entités")
   })
   # === FIN MODIF (typo AESN) =================================================
   
@@ -2045,7 +2045,7 @@ server <- function(input, output, session) {
   
   output$compteur_match <- renderText({
     r <- match_result()
-    if (is.null(r)) return("Lancez une requete pour voir les resultats")
+    if (is.null(r)) return("Lancez une requête pour voir les résultats")
     paste0("AMAP avec : ", nrow(r$amap_avec), " | AMAP sans : ", nrow(r$amap_sans), " | Fermes : ", nrow(r$fermes_prod))
   })
   
@@ -2156,7 +2156,7 @@ server <- function(input, output, session) {
         if (aesn_actif) {
           est_oui <- af[[col_typo]] == "oui"
           op <- ifelse(est_oui, 0.9, 0.4)
-          af$lab <- paste0(af$nom_amap, ifelse(est_oui, " (liee zone)", ""))
+          af$lab <- paste0(af$nom_amap, ifelse(est_oui, " (liée zone)", ""))
         } else { est_oui <- rep(TRUE, nrow(af)); op <- rep(0.85, nrow(af)); af$lab <- af$nom_amap }
         hi_mask <- af$id_groupe %in% ids_a_hi
         has_hi  <- length(ids_a_hi) > 0
@@ -2172,7 +2172,7 @@ server <- function(input, output, session) {
       }
       # === FIN MODIF (passe A) ===============================================
       
-      # === MODIF CLAUDE (panier) : entites selectionnees en magenta ==========
+      # === MODIF CLAUDE (panier) : entités selectionnees en magenta ==========
       dessiner_panier(proxy)
       # === FIN MODIF (panier) ================================================
       
@@ -2304,7 +2304,7 @@ server <- function(input, output, session) {
         } else {
           leg_html <- paste0("<div style='line-height:1.8'>",
                              picto_ferme("#33CC00", "#000", size = 14), "Ferme source<br>",
-                             picto_amap("#FF8000"), "AMAP d\u00e9j\u00e0 prise<br>",
+                             picto_amap("#FF8000"), "AMAP déjà prise<br>",
                              picto_amap("#4a9fd4"), "AMAP cible<br>",
                              picto_ferme("#e74c3c"), "Ferme concurrente", "</div>")
         }
@@ -2354,7 +2354,7 @@ server <- function(input, output, session) {
                              URLencode(sprintf('<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><circle cx="13" cy="13" r="11" fill="#4285f4" stroke="#fff" stroke-width="2"/><text x="13" y="17" font-size="13" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">%d</text></svg>', k), reserved = TRUE)),
             iconWidth = 26, iconHeight = 26, iconAnchorX = 13, iconAnchorY = 13)
           proxy %>% addMarkers(lng = w$lon, lat = w$lat, icon = ic,
-                               label = paste0("Etape ", k, " : ", w$nom),
+                               label = paste0("Étape ", k, " : ", w$nom),
                                layerId = paste0(w$type, "_", w$id), group = "itin_waypoints")
         }
       }
@@ -2372,16 +2372,16 @@ server <- function(input, output, session) {
     base_tbl <- if (type == "amap") amap else fermes
     idcol    <- if (type == "amap") "id_groupe" else "id_ferme"
     if (!(id %in% base_tbl[[idcol]]))
-      return(list(sym = "\u2717", txt = "coordonnees manquantes (entite non cartographiable)", col = "#c0392b"))
+      return(list(sym = "\u2717", txt = "coordonnées manquantes (entité non cartographiable)", col = "#c0392b"))
     
     if (mode == "explo") {
       couche_on <- if (type == "amap") isTRUE(input$show_amap) else isTRUE(input$show_fermes)
       if (!couche_on)
-        return(list(sym = "\u26A0", txt = "couche masquee (case decochee)", col = "#e67e22"))
+        return(list(sym = "\u26A0", txt = "couche masquée (case décochée)", col = "#e67e22"))
       ids_vis <- if (type == "amap") amap_f()$id_groupe else fermes_f()$id_ferme
       if (id %in% ids_vis)
         return(list(sym = "\u2713", txt = "visible sur la carte", col = "#1a7a1a"))
-      return(list(sym = "\u26A0", txt = "masquee par un filtre ou une zone", col = "#e67e22"))
+      return(list(sym = "\u26A0", txt = "masquée par un filtre ou une zone", col = "#e67e22"))
     } else {
       r <- match_result()
       if (is.null(r)) return(list(sym = "\u2014", txt = "aucune recherche active", col = "#999"))
@@ -2394,7 +2394,7 @@ server <- function(input, output, session) {
           if (!is.null(r$source_partners) && r$type == "amap") r$source_partners$id_ferme)
       if (id %in% ids_vis)
         return(list(sym = "\u2713", txt = "visible sur la carte", col = "#1a7a1a"))
-      return(list(sym = "\u26A0", txt = "hors rayon ou hors criteres de la recherche", col = "#e67e22"))
+      return(list(sym = "\u26A0", txt = "hors rayon ou hors critères de la recherche", col = "#e67e22"))
     }
   }
   # === FIN MODIF (bug 7) ======================================================
@@ -2446,9 +2446,9 @@ server <- function(input, output, session) {
         if (a$statut_amap != "")
           tags$p(class = "info_row", tags$span(class = "info_label", "Statut : "), a$statut_amap),
         if (!is.na(a$nb_adh))
-          tags$p(class = "info_row", tags$span(class = "info_label", "Adherent.es : "), a$nb_adh),
+          tags$p(class = "info_row", tags$span(class = "info_label", "Adhérent.es : "), a$nb_adh),
         if (!is.na(a$prod_presentes_txt) && a$prod_presentes_txt != "")
-          tagList(tags$div(class = "pr_sec", "Productions presentes"), tags$p(class = "info_row", a$prod_presentes_txt)),
+          tagList(tags$div(class = "pr_sec", "Productions présentes"), tags$p(class = "info_row", a$prod_presentes_txt)),
         if (!is.na(a$prod_absentes_txt) && a$prod_absentes_txt != "")
           tagList(tags$div(class = "pr_sec", "Productions absentes"), tags$div(class = "nonprod", a$prod_absentes_txt)),
         tags$div(class = "pr_sec", paste0("Fermes partenaires (", nrow(parts), ")")),
@@ -2491,7 +2491,7 @@ server <- function(input, output, session) {
         }
         file.copy(tmp, file)
       }, error = function(e) {
-        showNotification(paste("Export echoue :", conditionMessage(e)), type = "error", duration = 8)
+        showNotification(paste("Export échoué :", conditionMessage(e)), type = "error", duration = 8)
       })
     }
   )
@@ -2501,7 +2501,7 @@ server <- function(input, output, session) {
     filename = function() paste0("requete_amap_", format(Sys.Date(), "%Y%m%d"), ".xlsx"),
     content  = function(file) {
       r <- match_result()
-      if (is.null(r)) { showNotification("Aucune requete a exporter", type = "warning", duration = 5); return() }
+      if (is.null(r)) { showNotification("Aucune requête à exporter", type = "warning", duration = 5); return() }
       tryCatch({
         rayon_mut <- r$rayon_mut %||% 0
         params <- list(
@@ -2515,7 +2515,7 @@ server <- function(input, output, session) {
                                      mutualisation = mutu)
         file.copy(tmp, file)
       }, error = function(e) {
-        showNotification(paste("Export echoue :", conditionMessage(e)), type = "error", duration = 8)
+        showNotification(paste("Export échoué :", conditionMessage(e)), type = "error", duration = 8)
       })
     }
   )
@@ -2527,16 +2527,16 @@ server <- function(input, output, session) {
       showNotification("Lancez d'abord une recherche.", type = "warning", duration = 4); return()
     }
     if (mode_ctx == "explo" && nrow(fermes_f()) == 0 && nrow(amap_f()) == 0) {
-      showNotification("Aucune donnee a exporter.", type = "warning", duration = 4); return()
+      showNotification("Aucune donnée à exporter.", type = "warning", duration = 4); return()
     }
-    titre_defaut <- if (mode_ctx == "match") { r <- match_result(); paste0("Mise en relation : ", r$prod) } else "Carte AMAP Ile-de-France"
+    titre_defaut <- if (mode_ctx == "match") { r <- match_result(); paste0("Mise en relation : ", r$prod) } else "Carte AMAP Île-de-France"
     showModal(modalDialog(
       title = "Exporter en image", easyClose = TRUE,
-      footer = tagList(modalButton("Annuler"), downloadButton("dl_image", "Generer l'image", class = "btn_action")),
+      footer = tagList(modalButton("Annuler"), downloadButton("dl_image", "Générer l'image", class = "btn_action")),
       textInput("export_titre", "Titre de la carte", value = titre_defaut),
-      checkboxInput("export_legende",  "Afficher la legende",  value = TRUE),
+      checkboxInput("export_legende",  "Afficher la légende",  value = TRUE),
       checkboxInput("export_communes", "Afficher les communes (rendu plus long)", value = FALSE),
-      checkboxInput("export_fond_osm", "Afficher le fond de carte (necessite internet)", value = FALSE),
+      checkboxInput("export_fond_osm", "Afficher le fond de carte (nécessite internet)", value = FALSE),
       radioButtons("export_taille", "Taille",
                    choices = c("Petit (A5)" = "A5", "Standard (A4)" = "A4", "Grand (A3)" = "A3"), selected = "A4", inline = TRUE),
       tags$input(type = "hidden", id = "export_mode_ctx", value = mode_ctx)
@@ -2563,7 +2563,7 @@ server <- function(input, output, session) {
         else tmp <- exporter_carte("explo", list(amap_vis = amap_f(), fermes_vis = fermes_f()), options, fonds)
         file.copy(tmp, file); removeModal()
       }, error = function(e) {
-        showNotification(paste("Export image echoue :", conditionMessage(e)), type = "error", duration = 10)
+        showNotification(paste("Export image échoué :", conditionMessage(e)), type = "error", duration = 10)
       })
     }
   )

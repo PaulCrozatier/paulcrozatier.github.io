@@ -5,14 +5,14 @@ ref_produits <- data.frame(
   id = 1:23,
   label = c(
     "Brebis - Fromages", "Brebis - Agneaux",
-    "Cereales - Farines", "Cereales - Huiles", "Cereales - Legumineuses",
-    "Cereales - Pain", "Cereales - Pates",
-    "Chevres - Fromages", "Chevres - Cabris",
+    "Céréales - Farines", "Céréales - Huiles", "Céréales - Légumineuses",
+    "Céréales - Pain", "Céréales - Pâtes",
+    "Chèvres - Fromages", "Chèvres - Cabris",
     "Fruits - Pommes/poires/jus", "Fruits - Petits fruits rouges",
-    "Legumes - Maraichage", "Legumes - Pommes de terre", "Legumes - Champignons",
+    "Légumes - Maraîchage", "Légumes - Pommes de terre", "Légumes - Champignons",
     "Miel et produits apicoles", "Oeufs",
     "Plantes aromatiques", "Porc", "Produits de la mer",
-    "Vaches - Laitieres", "Vaches - Viande", "Volaille", "Autre"
+    "Vaches - Laitières", "Vaches - Viande", "Volaille", "Autre"
   ), stringsAsFactors = FALSE
 )
 

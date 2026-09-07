@@ -2,7 +2,7 @@
   "meta": {
     "version": "1.0",
     "graine": 20260829,
-    "avertissement": "Jeu de donnees entierement fictif, genere par R/generer_donnees_demo.R. Aucune donnee reelle du reseau n'est publiee. Les entites affichees n'existent pas. L'interface et les traitements sont ceux de l'outil d'origine.",
+    "avertissement": "Jeu de données entièrement fictif, généré par R/generer_donnees_demo.R. Aucune donnée réelle du réseau n'est publiée. Les entités affichées n'existent pas. L'interface et les traitements sont ceux de l'outil d'origine.",
     "volumes": {
       "amap": 405,
       "fermes": 400,
@@ -21,31 +21,31 @@
         },
         {
           "id": 3,
-          "label": "Cereales - Farines"
+          "label": "Céréales - Farines"
         },
         {
           "id": 4,
-          "label": "Cereales - Huiles"
+          "label": "Céréales - Huiles"
         },
         {
           "id": 5,
-          "label": "Cereales - Legumineuses"
+          "label": "Céréales - Légumineuses"
         },
         {
           "id": 6,
-          "label": "Cereales - Pain"
+          "label": "Céréales - Pain"
         },
         {
           "id": 7,
-          "label": "Cereales - Pates"
+          "label": "Céréales - Pâtes"
         },
         {
           "id": 8,
-          "label": "Chevres - Fromages"
+          "label": "Chèvres - Fromages"
         },
         {
           "id": 9,
-          "label": "Chevres - Cabris"
+          "label": "Chèvres - Cabris"
         },
         {
           "id": 10,
@@ -57,15 +57,15 @@
         },
         {
           "id": 12,
-          "label": "Legumes - Maraichage"
+          "label": "Légumes - Maraîchage"
         },
         {
           "id": 13,
-          "label": "Legumes - Pommes de terre"
+          "label": "Légumes - Pommes de terre"
         },
         {
           "id": 14,
-          "label": "Legumes - Champignons"
+          "label": "Légumes - Champignons"
         },
         {
           "id": 15,
@@ -89,7 +89,7 @@
         },
         {
           "id": 20,
-          "label": "Vaches - Laitieres"
+          "label": "Vaches - Laitières"
         },
         {
           "id": 21,
@@ -107,7 +107,7 @@
       "statuts_amap": ["complet", "creation", "fonctionne", "inactif"],
       "statuts_ferme": ["active", "inactive"],
       "jours": ["Dimanche", "Jeudi", "Lundi", "Mardi", "Mercredi", "Samedi", "Vendredi"],
-      "certifications": ["AB", "AB (en conversion)", "Autre", "Biocoherence", "Demeter", "Nature et Progres"],
+      "certifications": ["AB", "AB (en conversion)", "Autre", "Biocohérence", "Demeter", "Nature et Progrès"],
       "heures_debut": ["17h00", "17h30", "18h", "18h00", "18h15", "18h30", "18h45", "19h", "19h00", "19h15", "19h30", "19h45"],
       "heures_fin": ["19h", "19h15", "19h30", "19h45", "20h", "20h00", "20h15", "20h30", "20h45", "21h"]
     }
@@ -280,7 +280,7 @@
     },
     {
       "id_groupe": "G0016",
-      "nom_amap": "AMAP du Panier Albatre",
+      "nom_amap": "AMAP du Panier Albâtre",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "17h30",
@@ -478,7 +478,7 @@
     },
     {
       "id_groupe": "G0034",
-      "nom_amap": "AMAP des Sillons Celadon",
+      "nom_amap": "AMAP des Sillons Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -489,7 +489,7 @@
     },
     {
       "id_groupe": "G0035",
-      "nom_amap": "AMAP de la Meule Gres",
+      "nom_amap": "AMAP de la Meule Grès",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "17h00",
@@ -610,7 +610,7 @@
     },
     {
       "id_groupe": "G0046",
-      "nom_amap": "AMAP du Pressoir Albatre",
+      "nom_amap": "AMAP du Pressoir Albâtre",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "17h30",
@@ -764,7 +764,7 @@
     },
     {
       "id_groupe": "G0060",
-      "nom_amap": "AMAP du Verger Ecarlate",
+      "nom_amap": "AMAP du Verger Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -775,7 +775,7 @@
     },
     {
       "id_groupe": "G0061",
-      "nom_amap": "AMAP du Cabas Gres",
+      "nom_amap": "AMAP du Cabas Grès",
       "statut_amap": "fonctionne",
       "jour": "Samedi",
       "h_debut": "18h00",
@@ -797,7 +797,7 @@
     },
     {
       "id_groupe": "G0063",
-      "nom_amap": "AMAP du Pressoir Celadon",
+      "nom_amap": "AMAP du Pressoir Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "18h30",
@@ -830,7 +830,7 @@
     },
     {
       "id_groupe": "G0066",
-      "nom_amap": "AMAP de l'Aire Celadon",
+      "nom_amap": "AMAP de l'Aire Céladon",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h30",
@@ -841,7 +841,7 @@
     },
     {
       "id_groupe": "G0067",
-      "nom_amap": "AMAP du Verger Celadon",
+      "nom_amap": "AMAP du Verger Céladon",
       "statut_amap": "complet",
       "jour": "Jeudi",
       "h_debut": "18h00",
@@ -995,7 +995,7 @@
     },
     {
       "id_groupe": "G0081",
-      "nom_amap": "AMAP du Sillon Celadon",
+      "nom_amap": "AMAP du Sillon Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h",
@@ -1127,7 +1127,7 @@
     },
     {
       "id_groupe": "G0093",
-      "nom_amap": "AMAP de la Glane Ecarlate",
+      "nom_amap": "AMAP de la Glane Écarlate",
       "statut_amap": "complet",
       "jour": "Lundi",
       "h_debut": "18h",
@@ -1226,7 +1226,7 @@
     },
     {
       "id_groupe": "G0102",
-      "nom_amap": "AMAP des Halliers Albatre",
+      "nom_amap": "AMAP des Halliers Albâtre",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h45",
@@ -1369,7 +1369,7 @@
     },
     {
       "id_groupe": "G0115",
-      "nom_amap": "AMAP de la Cagette Gres",
+      "nom_amap": "AMAP de la Cagette Grès",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h45",
@@ -1468,7 +1468,7 @@
     },
     {
       "id_groupe": "G0124",
-      "nom_amap": "AMAP du Panier Ecarlate",
+      "nom_amap": "AMAP du Panier Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h30",
@@ -1677,7 +1677,7 @@
     },
     {
       "id_groupe": "G0143",
-      "nom_amap": "AMAP du Fournil Ecarlate",
+      "nom_amap": "AMAP du Fournil Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "18h",
@@ -1765,7 +1765,7 @@
     },
     {
       "id_groupe": "G0151",
-      "nom_amap": "AMAP de la Gerbe Ecarlate",
+      "nom_amap": "AMAP de la Gerbe Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "18h45",
@@ -1809,7 +1809,7 @@
     },
     {
       "id_groupe": "G0155",
-      "nom_amap": "AMAP des Sillons Ecarlate",
+      "nom_amap": "AMAP des Sillons Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "18h15",
@@ -2029,7 +2029,7 @@
     },
     {
       "id_groupe": "G0175",
-      "nom_amap": "AMAP de la Meule Celadon",
+      "nom_amap": "AMAP de la Meule Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "19h30",
@@ -2051,7 +2051,7 @@
     },
     {
       "id_groupe": "G0177",
-      "nom_amap": "AMAP de la Glane Etain",
+      "nom_amap": "AMAP de la Glane Étain",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "19h",
@@ -2139,7 +2139,7 @@
     },
     {
       "id_groupe": "G0185",
-      "nom_amap": "AMAP des Semis Albatre",
+      "nom_amap": "AMAP des Semis Albâtre",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "19h30",
@@ -2403,7 +2403,7 @@
     },
     {
       "id_groupe": "G0209",
-      "nom_amap": "AMAP des Ruches Ecarlate",
+      "nom_amap": "AMAP des Ruches Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -2425,7 +2425,7 @@
     },
     {
       "id_groupe": "G0211",
-      "nom_amap": "AMAP des Aires Ecarlate",
+      "nom_amap": "AMAP des Aires Écarlate",
       "statut_amap": "inactif",
       "jour": "Mercredi",
       "h_debut": "19h",
@@ -2491,7 +2491,7 @@
     },
     {
       "id_groupe": "G0217",
-      "nom_amap": "AMAP des Ruches Etain",
+      "nom_amap": "AMAP des Ruches Étain",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h45",
@@ -2634,7 +2634,7 @@
     },
     {
       "id_groupe": "G0230",
-      "nom_amap": "AMAP de la Glane Sepia",
+      "nom_amap": "AMAP de la Glane Sépia",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "19h",
@@ -2667,7 +2667,7 @@
     },
     {
       "id_groupe": "G0233",
-      "nom_amap": "AMAP des Cageots Gres",
+      "nom_amap": "AMAP des Cageots Grès",
       "statut_amap": "inactif",
       "jour": "Jeudi",
       "h_debut": "19h30",
@@ -2689,7 +2689,7 @@
     },
     {
       "id_groupe": "G0235",
-      "nom_amap": "AMAP de la Cagette Ecarlate",
+      "nom_amap": "AMAP de la Cagette Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "19h15",
@@ -2755,7 +2755,7 @@
     },
     {
       "id_groupe": "G0241",
-      "nom_amap": "AMAP des Aires Sepia",
+      "nom_amap": "AMAP des Aires Sépia",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h00",
@@ -2766,7 +2766,7 @@
     },
     {
       "id_groupe": "G0242",
-      "nom_amap": "AMAP de l'Aire Gres",
+      "nom_amap": "AMAP de l'Aire Grès",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "17h30",
@@ -2876,7 +2876,7 @@
     },
     {
       "id_groupe": "G0252",
-      "nom_amap": "AMAP du Clos Gres",
+      "nom_amap": "AMAP du Clos Grès",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "19h15",
@@ -3008,7 +3008,7 @@
     },
     {
       "id_groupe": "G0264",
-      "nom_amap": "AMAP du Fournil Sepia",
+      "nom_amap": "AMAP du Fournil Sépia",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -3195,7 +3195,7 @@
     },
     {
       "id_groupe": "G0281",
-      "nom_amap": "AMAP de la Grange Celadon",
+      "nom_amap": "AMAP de la Grange Céladon",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "19h30",
@@ -3206,7 +3206,7 @@
     },
     {
       "id_groupe": "G0282",
-      "nom_amap": "AMAP de la Serre Sepia",
+      "nom_amap": "AMAP de la Serre Sépia",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h30",
@@ -3261,7 +3261,7 @@
     },
     {
       "id_groupe": "G0287",
-      "nom_amap": "AMAP de la Meule Ecarlate",
+      "nom_amap": "AMAP de la Meule Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h30",
@@ -3294,7 +3294,7 @@
     },
     {
       "id_groupe": "G0290",
-      "nom_amap": "AMAP de la Glane Celadon",
+      "nom_amap": "AMAP de la Glane Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "19h",
@@ -3426,7 +3426,7 @@
     },
     {
       "id_groupe": "G0302",
-      "nom_amap": "AMAP des Semis Gres",
+      "nom_amap": "AMAP des Semis Grès",
       "statut_amap": "inactif",
       "jour": "Mardi",
       "h_debut": "18h",
@@ -3437,7 +3437,7 @@
     },
     {
       "id_groupe": "G0303",
-      "nom_amap": "AMAP du Verger Albatre",
+      "nom_amap": "AMAP du Verger Albâtre",
       "statut_amap": "inactif",
       "jour": "Vendredi",
       "h_debut": "19h45",
@@ -3459,7 +3459,7 @@
     },
     {
       "id_groupe": "G0305",
-      "nom_amap": "AMAP de la Glane Gres",
+      "nom_amap": "AMAP de la Glane Grès",
       "statut_amap": "fonctionne",
       "jour": "Mardi",
       "h_debut": "19h",
@@ -3613,7 +3613,7 @@
     },
     {
       "id_groupe": "G0319",
-      "nom_amap": "AMAP du Cabas Ecarlate",
+      "nom_amap": "AMAP du Cabas Écarlate",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "18h30",
@@ -3624,7 +3624,7 @@
     },
     {
       "id_groupe": "G0320",
-      "nom_amap": "AMAP du Panier Gres",
+      "nom_amap": "AMAP du Panier Grès",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "17h00",
@@ -3646,7 +3646,7 @@
     },
     {
       "id_groupe": "G0322",
-      "nom_amap": "AMAP du Cabas Sepia",
+      "nom_amap": "AMAP du Cabas Sépia",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -3734,7 +3734,7 @@
     },
     {
       "id_groupe": "G0330",
-      "nom_amap": "AMAP de la Cagette Sepia",
+      "nom_amap": "AMAP de la Cagette Sépia",
       "statut_amap": "complet",
       "jour": "Mardi",
       "h_debut": "18h30",
@@ -3800,7 +3800,7 @@
     },
     {
       "id_groupe": "G0336",
-      "nom_amap": "AMAP des Sillons Sepia",
+      "nom_amap": "AMAP des Sillons Sépia",
       "statut_amap": "fonctionne",
       "jour": "Lundi",
       "h_debut": "18h30",
@@ -3822,7 +3822,7 @@
     },
     {
       "id_groupe": "G0338",
-      "nom_amap": "AMAP des Semis Etain",
+      "nom_amap": "AMAP des Semis Étain",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "18h30",
@@ -3844,7 +3844,7 @@
     },
     {
       "id_groupe": "G0340",
-      "nom_amap": "AMAP de la Serre Gres",
+      "nom_amap": "AMAP de la Serre Grès",
       "statut_amap": "creation",
       "jour": "Mardi",
       "h_debut": "18h00",
@@ -3866,7 +3866,7 @@
     },
     {
       "id_groupe": "G0342",
-      "nom_amap": "AMAP des Halliers Ecarlate",
+      "nom_amap": "AMAP des Halliers Écarlate",
       "statut_amap": "inactif",
       "jour": "Mercredi",
       "h_debut": "19h15",
@@ -3987,7 +3987,7 @@
     },
     {
       "id_groupe": "G0353",
-      "nom_amap": "AMAP de la Serre Celadon",
+      "nom_amap": "AMAP de la Serre Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "17h30",
@@ -4064,7 +4064,7 @@
     },
     {
       "id_groupe": "G0360",
-      "nom_amap": "AMAP des Cageots Celadon",
+      "nom_amap": "AMAP des Cageots Céladon",
       "statut_amap": "inactif",
       "jour": "Mercredi",
       "h_debut": "19h",
@@ -4152,7 +4152,7 @@
     },
     {
       "id_groupe": "G0368",
-      "nom_amap": "AMAP des Aires Etain",
+      "nom_amap": "AMAP des Aires Étain",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h30",
@@ -4262,7 +4262,7 @@
     },
     {
       "id_groupe": "G0378",
-      "nom_amap": "AMAP de la Grange Etain",
+      "nom_amap": "AMAP de la Grange Étain",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "18h30",
@@ -4306,7 +4306,7 @@
     },
     {
       "id_groupe": "G0382",
-      "nom_amap": "AMAP des Aires Albatre",
+      "nom_amap": "AMAP des Aires Albâtre",
       "statut_amap": "fonctionne",
       "jour": "Jeudi",
       "h_debut": "18h30",
@@ -4372,7 +4372,7 @@
     },
     {
       "id_groupe": "G0388",
-      "nom_amap": "AMAP de la Gerbe Celadon",
+      "nom_amap": "AMAP de la Gerbe Céladon",
       "statut_amap": "fonctionne",
       "jour": "Mercredi",
       "h_debut": "19h",
@@ -4427,7 +4427,7 @@
     },
     {
       "id_groupe": "G0393",
-      "nom_amap": "AMAP des Cageots Sepia",
+      "nom_amap": "AMAP des Cageots Sépia",
       "statut_amap": "inactif",
       "jour": "Mercredi",
       "h_debut": "19h",
@@ -4548,7 +4548,7 @@
     },
     {
       "id_groupe": "G0404",
-      "nom_amap": "AMAP de la Meule Etain",
+      "nom_amap": "AMAP de la Meule Étain",
       "statut_amap": "fonctionne",
       "jour": "Vendredi",
       "h_debut": "18h45",
@@ -4559,7 +4559,7 @@
     },
     {
       "id_groupe": "G0405",
-      "nom_amap": "AMAP du Clos Ecarlate",
+      "nom_amap": "AMAP du Clos Écarlate",
       "statut_amap": "inactif",
       "jour": "Jeudi",
       "h_debut": "17h30",
@@ -4608,7 +4608,7 @@
     },
     {
       "id_ferme": "F0004",
-      "nom_ferme": "Le Domaine des Cagettes Sepia",
+      "nom_ferme": "Le Domaine des Cagettes Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2003",
@@ -4622,7 +4622,7 @@
       "id_ferme": "F0005",
       "nom_ferme": "Le Fournil des Semis Suie",
       "statut_ferme": "active",
-      "certif": "AB, Biocoherence",
+      "certif": "AB, Biocohérence",
       "annee_amap": "",
       "id_productions": "-10-",
       "id_productions_amap": "",
@@ -4632,7 +4632,7 @@
     },
     {
       "id_ferme": "F0006",
-      "nom_ferme": "Ferme du Sillon Sepia",
+      "nom_ferme": "Ferme du Sillon Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -4680,7 +4680,7 @@
     },
     {
       "id_ferme": "F0010",
-      "nom_ferme": "Ferme du Sillon Ecarlate",
+      "nom_ferme": "Ferme du Sillon Écarlate",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2011",
@@ -4728,7 +4728,7 @@
     },
     {
       "id_ferme": "F0014",
-      "nom_ferme": "La Chevrerie du Clos Sable",
+      "nom_ferme": "La Chèvrerie du Clos Sable",
       "statut_ferme": "inactive",
       "certif": "AB",
       "annee_amap": "2005",
@@ -4740,7 +4740,7 @@
     },
     {
       "id_ferme": "F0015",
-      "nom_ferme": "Le Fournil des Semis Etain",
+      "nom_ferme": "Le Fournil des Semis Étain",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -4764,7 +4764,7 @@
     },
     {
       "id_ferme": "F0017",
-      "nom_ferme": "La Chevrerie du Clos Suie",
+      "nom_ferme": "La Chèvrerie du Clos Suie",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -4824,7 +4824,7 @@
     },
     {
       "id_ferme": "F0022",
-      "nom_ferme": "Ferme de la Gerbe Sepia",
+      "nom_ferme": "Ferme de la Gerbe Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -4836,7 +4836,7 @@
     },
     {
       "id_ferme": "F0023",
-      "nom_ferme": "Les Terres du Pressoir Albatre",
+      "nom_ferme": "Les Terres du Pressoir Albâtre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2011",
@@ -4908,7 +4908,7 @@
     },
     {
       "id_ferme": "F0029",
-      "nom_ferme": "La Chevrerie du Clos Carmin",
+      "nom_ferme": "La Chèvrerie du Clos Carmin",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5100,7 +5100,7 @@
     },
     {
       "id_ferme": "F0045",
-      "nom_ferme": "La Serre des Halliers Etain",
+      "nom_ferme": "La Serre des Halliers Étain",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -5136,7 +5136,7 @@
     },
     {
       "id_ferme": "F0048",
-      "nom_ferme": "Le Domaine des Cagettes Celadon",
+      "nom_ferme": "Le Domaine des Cagettes Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2007",
@@ -5232,7 +5232,7 @@
     },
     {
       "id_ferme": "F0056",
-      "nom_ferme": "Les Champs du Pressoir Ecarlate",
+      "nom_ferme": "Les Champs du Pressoir Écarlate",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5280,7 +5280,7 @@
     },
     {
       "id_ferme": "F0060",
-      "nom_ferme": "Le Clos des Aires Albatre",
+      "nom_ferme": "Le Clos des Aires Albâtre",
       "statut_ferme": "active",
       "certif": "Autre",
       "annee_amap": "",
@@ -5340,7 +5340,7 @@
     },
     {
       "id_ferme": "F0065",
-      "nom_ferme": "Les Terres du Pressoir Ecarlate",
+      "nom_ferme": "Les Terres du Pressoir Écarlate",
       "statut_ferme": "active",
       "certif": "AB, Autre",
       "annee_amap": "",
@@ -5364,7 +5364,7 @@
     },
     {
       "id_ferme": "F0067",
-      "nom_ferme": "La Chevrerie du Clos Schiste",
+      "nom_ferme": "La Chèvrerie du Clos Schiste",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2006",
@@ -5400,7 +5400,7 @@
     },
     {
       "id_ferme": "F0070",
-      "nom_ferme": "La Bergerie des Aires Etain",
+      "nom_ferme": "La Bergerie des Aires Étain",
       "statut_ferme": "active",
       "certif": "Autre",
       "annee_amap": "",
@@ -5460,7 +5460,7 @@
     },
     {
       "id_ferme": "F0075",
-      "nom_ferme": "Le Domaine des Cagettes Etain",
+      "nom_ferme": "Le Domaine des Cagettes Étain",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -5640,7 +5640,7 @@
     },
     {
       "id_ferme": "F0090",
-      "nom_ferme": "Ferme des Semis Albatre",
+      "nom_ferme": "Ferme des Semis Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2022",
@@ -5736,7 +5736,7 @@
     },
     {
       "id_ferme": "F0098",
-      "nom_ferme": "Le Fournil des Semis Ecarlate",
+      "nom_ferme": "Le Fournil des Semis Écarlate",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -5760,7 +5760,7 @@
     },
     {
       "id_ferme": "F0100",
-      "nom_ferme": "La Grange aux Cagettes Sepia",
+      "nom_ferme": "La Grange aux Cagettes Sépia",
       "statut_ferme": "active",
       "certif": "AB, AB (en conversion)",
       "annee_amap": "",
@@ -5772,7 +5772,7 @@
     },
     {
       "id_ferme": "F0101",
-      "nom_ferme": "Les Terres du Pressoir Etain",
+      "nom_ferme": "Les Terres du Pressoir Étain",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5798,7 +5798,7 @@
       "id_ferme": "F0103",
       "nom_ferme": "La Serre des Halliers Ardoise",
       "statut_ferme": "inactive",
-      "certif": "AB, Biocoherence",
+      "certif": "AB, Biocohérence",
       "annee_amap": "",
       "id_productions": "-12-",
       "id_productions_amap": "",
@@ -5880,7 +5880,7 @@
     },
     {
       "id_ferme": "F0110",
-      "nom_ferme": "Les Terres du Pressoir Celadon",
+      "nom_ferme": "Les Terres du Pressoir Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5904,7 +5904,7 @@
     },
     {
       "id_ferme": "F0112",
-      "nom_ferme": "La Bergerie des Aires Celadon",
+      "nom_ferme": "La Bergerie des Aires Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5916,7 +5916,7 @@
     },
     {
       "id_ferme": "F0113",
-      "nom_ferme": "Les Ruches du Sillon Gres",
+      "nom_ferme": "Les Ruches du Sillon Grès",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2020",
@@ -5940,7 +5940,7 @@
     },
     {
       "id_ferme": "F0115",
-      "nom_ferme": "Ferme de la Gerbe Celadon",
+      "nom_ferme": "Ferme de la Gerbe Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -5976,7 +5976,7 @@
     },
     {
       "id_ferme": "F0118",
-      "nom_ferme": "Le Verger du Cabas Celadon",
+      "nom_ferme": "Le Verger du Cabas Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -6000,7 +6000,7 @@
     },
     {
       "id_ferme": "F0120",
-      "nom_ferme": "Jardins de la Glane Sepia",
+      "nom_ferme": "Jardins de la Glane Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -6048,7 +6048,7 @@
     },
     {
       "id_ferme": "F0124",
-      "nom_ferme": "La Chevrerie du Clos Argile",
+      "nom_ferme": "La Chèvrerie du Clos Argile",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2015",
@@ -6108,7 +6108,7 @@
     },
     {
       "id_ferme": "F0129",
-      "nom_ferme": "La Chevrerie du Clos Turquoise",
+      "nom_ferme": "La Chèvrerie du Clos Turquoise",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2019",
@@ -6216,7 +6216,7 @@
     },
     {
       "id_ferme": "F0138",
-      "nom_ferme": "Ferme de la Gerbe Albatre",
+      "nom_ferme": "Ferme de la Gerbe Albâtre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -6288,7 +6288,7 @@
     },
     {
       "id_ferme": "F0144",
-      "nom_ferme": "La Chevrerie du Clos Ecarlate",
+      "nom_ferme": "La Chèvrerie du Clos Écarlate",
       "statut_ferme": "active",
       "certif": "AB, AB (en conversion)",
       "annee_amap": "",
@@ -6444,7 +6444,7 @@
     },
     {
       "id_ferme": "F0157",
-      "nom_ferme": "Ferme des Semis Sepia",
+      "nom_ferme": "Ferme des Semis Sépia",
       "statut_ferme": "inactive",
       "certif": "AB",
       "annee_amap": "2022",
@@ -6492,7 +6492,7 @@
     },
     {
       "id_ferme": "F0161",
-      "nom_ferme": "Le Domaine des Cagettes Albatre",
+      "nom_ferme": "Le Domaine des Cagettes Albâtre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -6516,7 +6516,7 @@
     },
     {
       "id_ferme": "F0163",
-      "nom_ferme": "La Meule du Clos Gres",
+      "nom_ferme": "La Meule du Clos Grès",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2005",
@@ -6636,7 +6636,7 @@
     },
     {
       "id_ferme": "F0173",
-      "nom_ferme": "La Chevrerie du Clos Calcaire",
+      "nom_ferme": "La Chèvrerie du Clos Calcaire",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -6660,7 +6660,7 @@
     },
     {
       "id_ferme": "F0175",
-      "nom_ferme": "Le Verger du Cabas Albatre",
+      "nom_ferme": "Le Verger du Cabas Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2021",
@@ -6708,7 +6708,7 @@
     },
     {
       "id_ferme": "F0179",
-      "nom_ferme": "La Chevrerie du Clos Bronze",
+      "nom_ferme": "La Chèvrerie du Clos Bronze",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2008",
@@ -6744,7 +6744,7 @@
     },
     {
       "id_ferme": "F0182",
-      "nom_ferme": "Ferme du Sillon Gres",
+      "nom_ferme": "Ferme du Sillon Grès",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -6840,7 +6840,7 @@
     },
     {
       "id_ferme": "F0190",
-      "nom_ferme": "La Chevrerie du Clos Ocre",
+      "nom_ferme": "La Chèvrerie du Clos Ocre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2020",
@@ -6924,7 +6924,7 @@
     },
     {
       "id_ferme": "F0197",
-      "nom_ferme": "La Chevrerie du Clos Porphyre",
+      "nom_ferme": "La Chèvrerie du Clos Porphyre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -7044,7 +7044,7 @@
     },
     {
       "id_ferme": "F0207",
-      "nom_ferme": "La Chevrerie du Clos Gneiss",
+      "nom_ferme": "La Chèvrerie du Clos Gneiss",
       "statut_ferme": "inactive",
       "certif": "AB",
       "annee_amap": "",
@@ -7092,7 +7092,7 @@
     },
     {
       "id_ferme": "F0211",
-      "nom_ferme": "La Chevrerie du Clos Sanguine",
+      "nom_ferme": "La Chèvrerie du Clos Sanguine",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2023",
@@ -7176,7 +7176,7 @@
     },
     {
       "id_ferme": "F0218",
-      "nom_ferme": "Le Verger du Cabas Etain",
+      "nom_ferme": "Le Verger du Cabas Étain",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2024",
@@ -7188,7 +7188,7 @@
     },
     {
       "id_ferme": "F0219",
-      "nom_ferme": "La Meule du Clos Albatre",
+      "nom_ferme": "La Meule du Clos Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7236,7 +7236,7 @@
     },
     {
       "id_ferme": "F0223",
-      "nom_ferme": "Les Sillons de la Glane Albatre",
+      "nom_ferme": "Les Sillons de la Glane Albâtre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2022",
@@ -7260,7 +7260,7 @@
     },
     {
       "id_ferme": "F0225",
-      "nom_ferme": "La Chevrerie du Clos Grenat",
+      "nom_ferme": "La Chèvrerie du Clos Grenat",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -7272,7 +7272,7 @@
     },
     {
       "id_ferme": "F0226",
-      "nom_ferme": "La Chevrerie du Clos Basalte",
+      "nom_ferme": "La Chèvrerie du Clos Basalte",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -7296,7 +7296,7 @@
     },
     {
       "id_ferme": "F0228",
-      "nom_ferme": "La Chevrerie du Clos Ardoise",
+      "nom_ferme": "La Chèvrerie du Clos Ardoise",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7368,7 +7368,7 @@
     },
     {
       "id_ferme": "F0234",
-      "nom_ferme": "La Chevrerie du Clos Craie",
+      "nom_ferme": "La Chèvrerie du Clos Craie",
       "statut_ferme": "active",
       "certif": "Autre",
       "annee_amap": "",
@@ -7440,7 +7440,7 @@
     },
     {
       "id_ferme": "F0240",
-      "nom_ferme": "La Chevrerie du Clos Indigo",
+      "nom_ferme": "La Chèvrerie du Clos Indigo",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7524,7 +7524,7 @@
     },
     {
       "id_ferme": "F0247",
-      "nom_ferme": "Jardins de la Glane Gres",
+      "nom_ferme": "Jardins de la Glane Grès",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -7536,7 +7536,7 @@
     },
     {
       "id_ferme": "F0248",
-      "nom_ferme": "La Bergerie des Aires Gres",
+      "nom_ferme": "La Bergerie des Aires Grès",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7596,7 +7596,7 @@
     },
     {
       "id_ferme": "F0253",
-      "nom_ferme": "Le Domaine des Cagettes Ecarlate",
+      "nom_ferme": "Le Domaine des Cagettes Écarlate",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7620,7 +7620,7 @@
     },
     {
       "id_ferme": "F0255",
-      "nom_ferme": "Le Fournil des Semis Celadon",
+      "nom_ferme": "Le Fournil des Semis Céladon",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2023",
@@ -7632,7 +7632,7 @@
     },
     {
       "id_ferme": "F0256",
-      "nom_ferme": "La Bergerie des Aires Sepia",
+      "nom_ferme": "La Bergerie des Aires Sépia",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2016",
@@ -7692,7 +7692,7 @@
     },
     {
       "id_ferme": "F0261",
-      "nom_ferme": "Le Pressoir des Semis Ecarlate",
+      "nom_ferme": "Le Pressoir des Semis Écarlate",
       "statut_ferme": "inactive",
       "certif": "",
       "annee_amap": "",
@@ -7704,7 +7704,7 @@
     },
     {
       "id_ferme": "F0262",
-      "nom_ferme": "La Chevrerie du Clos Gres",
+      "nom_ferme": "La Chèvrerie du Clos Grès",
       "statut_ferme": "inactive",
       "certif": "AB",
       "annee_amap": "",
@@ -7728,7 +7728,7 @@
     },
     {
       "id_ferme": "F0264",
-      "nom_ferme": "La Bergerie des Aires Albatre",
+      "nom_ferme": "La Bergerie des Aires Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7824,7 +7824,7 @@
     },
     {
       "id_ferme": "F0272",
-      "nom_ferme": "Le Fournil des Semis Albatre",
+      "nom_ferme": "Le Fournil des Semis Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7956,7 +7956,7 @@
     },
     {
       "id_ferme": "F0283",
-      "nom_ferme": "La Chevrerie du Clos Anthracite",
+      "nom_ferme": "La Chèvrerie du Clos Anthracite",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -7968,7 +7968,7 @@
     },
     {
       "id_ferme": "F0284",
-      "nom_ferme": "La Chevrerie du Clos Pourpre",
+      "nom_ferme": "La Chèvrerie du Clos Pourpre",
       "statut_ferme": "active",
       "certif": "Autre",
       "annee_amap": "",
@@ -7992,7 +7992,7 @@
     },
     {
       "id_ferme": "F0286",
-      "nom_ferme": "Les Champs du Pressoir Celadon",
+      "nom_ferme": "Les Champs du Pressoir Céladon",
       "statut_ferme": "active",
       "certif": "AB, AB (en conversion)",
       "annee_amap": "2010",
@@ -8148,7 +8148,7 @@
     },
     {
       "id_ferme": "F0299",
-      "nom_ferme": "La Chevrerie du Clos Onyx",
+      "nom_ferme": "La Chèvrerie du Clos Onyx",
       "statut_ferme": "inactive",
       "certif": "AB",
       "annee_amap": "",
@@ -8172,7 +8172,7 @@
     },
     {
       "id_ferme": "F0301",
-      "nom_ferme": "Jardins du Clos Celadon",
+      "nom_ferme": "Jardins du Clos Céladon",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2013",
@@ -8208,7 +8208,7 @@
     },
     {
       "id_ferme": "F0304",
-      "nom_ferme": "Le Clos des Aires Ecarlate",
+      "nom_ferme": "Le Clos des Aires Écarlate",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2016",
@@ -8220,7 +8220,7 @@
     },
     {
       "id_ferme": "F0305",
-      "nom_ferme": "Le Clos des Aires Sepia",
+      "nom_ferme": "Le Clos des Aires Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2008",
@@ -8328,7 +8328,7 @@
     },
     {
       "id_ferme": "F0314",
-      "nom_ferme": "Jardins de la Glane Albatre",
+      "nom_ferme": "Jardins de la Glane Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "2014",
@@ -8352,7 +8352,7 @@
     },
     {
       "id_ferme": "F0316",
-      "nom_ferme": "La Meule du Clos Sepia",
+      "nom_ferme": "La Meule du Clos Sépia",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",
@@ -8568,7 +8568,7 @@
     },
     {
       "id_ferme": "F0334",
-      "nom_ferme": "Le Rucher des Terres Albatre",
+      "nom_ferme": "Le Rucher des Terres Albâtre",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -8748,9 +8748,9 @@
     },
     {
       "id_ferme": "F0349",
-      "nom_ferme": "Le Clos des Aires Gres",
+      "nom_ferme": "Le Clos des Aires Grès",
       "statut_ferme": "inactive",
-      "certif": "AB, Biocoherence",
+      "certif": "AB, Biocohérence",
       "annee_amap": "2004",
       "id_productions": "-10-",
       "id_productions_amap": "",
@@ -8796,7 +8796,7 @@
     },
     {
       "id_ferme": "F0353",
-      "nom_ferme": "Jardins du Clos Ecarlate",
+      "nom_ferme": "Jardins du Clos Écarlate",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "2006",
@@ -8952,7 +8952,7 @@
     },
     {
       "id_ferme": "F0366",
-      "nom_ferme": "Le Rucher des Terres Etain",
+      "nom_ferme": "Le Rucher des Terres Étain",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -8964,7 +8964,7 @@
     },
     {
       "id_ferme": "F0367",
-      "nom_ferme": "Le Pressoir des Semis Etain",
+      "nom_ferme": "Le Pressoir des Semis Étain",
       "statut_ferme": "active",
       "certif": "AB",
       "annee_amap": "",
@@ -9168,7 +9168,7 @@
     },
     {
       "id_ferme": "F0384",
-      "nom_ferme": "Les Champs du Pressoir Albatre",
+      "nom_ferme": "Les Champs du Pressoir Albâtre",
       "statut_ferme": "active",
       "certif": "",
       "annee_amap": "",

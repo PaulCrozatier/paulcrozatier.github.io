@@ -49,14 +49,14 @@ REF_PRODUITS <- data.frame(
   id = 1:23,
   label = c(
     "Brebis - Fromages", "Brebis - Agneaux",
-    "Cereales - Farines", "Cereales - Huiles", "Cereales - Legumineuses",
-    "Cereales - Pain", "Cereales - Pates",
-    "Chevres - Fromages", "Chevres - Cabris",
+    "Céréales - Farines", "Céréales - Huiles", "Céréales - Légumineuses",
+    "Céréales - Pain", "Céréales - Pâtes",
+    "Chèvres - Fromages", "Chèvres - Cabris",
     "Fruits - Pommes/poires/jus", "Fruits - Petits fruits rouges",
-    "Legumes - Maraichage", "Legumes - Pommes de terre", "Legumes - Champignons",
+    "Légumes - Maraîchage", "Légumes - Pommes de terre", "Légumes - Champignons",
     "Miel et produits apicoles", "Oeufs",
     "Plantes aromatiques", "Porc", "Produits de la mer",
-    "Vaches - Laitieres", "Vaches - Viande", "Volaille", "Autre"
+    "Vaches - Laitières", "Vaches - Viande", "Volaille", "Autre"
   ), stringsAsFactors = FALSE
 )
 
@@ -76,7 +76,7 @@ JOURS         <- c(Mercredi = 129, Jeudi = 127, Mardi = 86, Vendredi = 53,
 CERTIFS <- setNames(
   c(341, 235, 23, 8, 4, 3, 2, 1, 1),
   c("", "AB", "Autre", "AB (en conversion)", "AB, AB (en conversion)",
-    "AB, Autre", "AB, Biocoherence", "AB, Demeter", "AB, Nature et Progres")
+    "AB, Autre", "AB, Biocohérence", "AB, Demeter", "AB, Nature et Progrès")
 )
 HEURES_DEBUT  <- c("18h30" = 107, "19h" = 67, "18h" = 49, "18h45" = 18,
                    "19h30" = 17, "17h30" = 16, "18h00" = 15, "19h00" = 15,
@@ -103,7 +103,7 @@ FERME_TETE <- c("Ferme du Sillon", "Ferme de la Gerbe", "Ferme des Semis",
                 "Le Verger du Cabas", "La Serre des Halliers",
                 "Les Ruches du Sillon", "La Bergerie des Aires",
                 "Le Fournil des Semis", "Les Champs du Pressoir",
-                "La Chevrerie du Clos", "Le Rucher des Terres",
+                "La Chèvrerie du Clos", "Le Rucher des Terres",
                 "Le Pressoir des Semis", "La Meule du Clos",
                 "Les Sillons de la Glane", "Le Domaine des Cagettes")
 
@@ -113,12 +113,12 @@ FERME_TETE <- c("Ferme du Sillon", "Ferme de la Gerbe", "Ferme des Semis",
 #   - aucun toponyme (ecartes : Sienne, Marne).
 # Le generateur ne peut donc composer ni un nom de personne ni un nom de lieu.
 QUALIFIANTS <- c("Safran", "Indigo", "Ocre", "Turquoise", "Cuivre", "Ardoise",
-                 "Vermeil", "Cobalt", "Bistre", "Celadon", "Carmin", "Ivoire",
-                 "Onyx", "Sable", "Grenat", "Ecarlate", "Fauve", "Pourpre",
+                 "Vermeil", "Cobalt", "Bistre", "Céladon", "Carmin", "Ivoire",
+                 "Onyx", "Sable", "Grenat", "Écarlate", "Fauve", "Pourpre",
                  "Cendre", "Bronze", "Argile", "Basalte", "Granit", "Silex",
-                 "Craie", "Schiste", "Gres", "Tuffeau", "Calcaire", "Albatre",
+                 "Craie", "Schiste", "Grès", "Tuffeau", "Calcaire", "Albâtre",
                  "Porphyre", "Malachite", "Vermillon", "Cinabre", "Sanguine",
-                 "Sepia", "Outremer", "Anthracite", "Etain", "Laiton", "Zinc",
+                 "Sépia", "Outremer", "Anthracite", "Étain", "Laiton", "Zinc",
                  "Quartz", "Mica", "Gneiss", "Chaux", "Suie")
 
 # =============================================================================
@@ -168,8 +168,8 @@ composer_noms <- function(tetes, n) {
   grille <- expand.grid(t = tetes, q = QUALIFIANTS, stringsAsFactors = FALSE)
   possibles <- unique(paste(grille$t, grille$q))
   if (length(possibles) < n * 1.5)
-    stop("Lexique trop etroit : ", length(possibles), " combinaisons pour ", n,
-         " noms demandes. Elargir AMAP_TETE / FERME_TETE / QUALIFIANTS.")
+    stop("Lexique trop étroit : ", length(possibles), " combinaisons pour ", n,
+         "  noms demandés. Élargir AMAP_TETE / FERME_TETE / QUALIFIANTS.")
   sample(possibles, n)
 }
 
@@ -185,7 +185,7 @@ encoder_prod <- function(ids) {
 set.seed(GRAINE)
 
 if (!file.exists(chemin_idf))
-  stop("Contour regional introuvable : ", chemin_idf)
+  stop("Contour régional introuvable : ", chemin_idf)
 contour_idf <- st_make_valid(readRDS(chemin_idf))
 contour_idf <- st_union(st_transform(contour_idf, 4326))
 
@@ -336,8 +336,8 @@ donnees <- list(
     version = "1.0",
     graine  = GRAINE,
     avertissement = paste(
-      "Jeu de donnees entierement fictif, genere par R/generer_donnees_demo.R.",
-      "Aucune donnee reelle du reseau n'est publiee. Les entites affichees",
+      "Jeu de données entièrement fictif, généré par R/generer_donnees_demo.R.",
+      "Aucune donnée réelle du réseau n'est publiée. Les entités affichées",
       "n'existent pas. L'interface et les traitements sont ceux de l'outil",
       "d'origine."
     ),
@@ -363,7 +363,7 @@ json <- toJSON(donnees, dataframe = "rows", auto_unbox = TRUE,
                na = "null", digits = 6, pretty = 2)
 writeLines(json, sortie, useBytes = TRUE)
 
-cat("Genere :", normalizePath(sortie, winslash = "/"), "\n")
+cat("Généré :", normalizePath(sortie, winslash = "/"), "\n")
 cat("  AMAP               :", nrow(amap), "\n")
 cat("  Fermes             :", nrow(fermes), "\n")
 cat("  Partenariats       :", nrow(partenariats),

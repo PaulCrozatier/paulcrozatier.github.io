@@ -33,9 +33,9 @@ exporter_carte <- function(mode, donnees, options, fonds) {
   # DIAGNOSTIC console
   cat("\n===== EXPORT IMAGE =====\n")
   cat("Mode :", mode, "\n")
-  cat("AAC presente :", !is.null(fonds$aac_sf),
+  cat("AAC présente :", !is.null(fonds$aac_sf),
       if (!is.null(fonds$aac_sf)) paste(" -", nrow(fonds$aac_sf), "polygones") else "", "\n")
-  cat("ZPA presente :", !is.null(fonds$zpa_sf),
+  cat("ZPA présente :", !is.null(fonds$zpa_sf),
       if (!is.null(fonds$zpa_sf)) paste(" -", nrow(fonds$zpa_sf), "polygones") else "", "\n")
   cat("========================\n\n")
   
@@ -106,7 +106,7 @@ exporter_carte <- function(mode, donnees, options, fonds) {
     } else {
       col_avec <- "#FF8000"; col_sans <- "#4a9fd4"; col_fer <- "#e74c3c"
       col_anchor <- "#33CC00"
-      lab_avec <- "AMAP deja prise"
+      lab_avec <- "AMAP déjà prise"
       lab_sans <- "AMAP cible"
       lab_fer  <- "Ferme concurrente"
       lab_src  <- "Ferme source"
@@ -251,7 +251,7 @@ exporter_carte <- function(mode, donnees, options, fonds) {
 
   # Pied de page : la mention voyage avec l'image, qui sort de l'application.
   pied <- ggdraw() +
-    draw_text("Jeu de donnees fictif - entites entierement generees, aucune donnee reelle publiee.",
+    draw_text("Jeu de données fictif - entités entièrement générées, aucune donnée réelle publiée.",
               x = 0.02, y = 0.5, size = 9, family = POLICE,
               color = "#5b4b8a", hjust = 0, vjust = 0.5) +
     draw_text(paste0(if (!is.null(fonds$aac_sf) || !is.null(fonds$zpa_sf)) "Zonages : AESN   -   " else "",

@@ -29,18 +29,18 @@ resultats <- list()
 noter <- function(id, libelle, etat, detail = "") {
   resultats[[length(resultats) + 1L]] <<-
     list(id = id, libelle = libelle, etat = etat, detail = detail)
-  symbole <- switch(etat, OK = "  OK    ", ECHEC = "  ECHEC ", `NON EXEC` = "  NON EXEC ")
+  symbole <- switch(etat, OK = "  OK    ", ECHEC = "  ÉCHEC ", `NON EXEC` = "  NON EXEC ")
   cat(sprintf("%s %-2s %s\n", symbole, id, libelle))
   if (etat != "OK" && nzchar(detail))
     for (l in strsplit(detail, "\n")[[1]]) cat("           ", l, "\n")
 }
 
 cat("=============================================================\n")
-cat(" CONTROLE DE CONFORMITE — jeu de donnees de demonstration\n")
+cat(" CONTRÔLE DE CONFORMITÉ — jeu de données de démonstration\n")
 cat("=============================================================\n\n")
 
 if (!file.exists(f_json)) {
-  cat("ECHEC BLOQUANT : ", f_json, " introuvable.\n", sep = "")
+  cat("ÉCHEC BLOQUANT : ", f_json, " introuvable.\n", sep = "")
   quit(status = 1)
 }
 d <- fromJSON(f_json, simplifyDataFrame = TRUE)
@@ -113,7 +113,7 @@ toutes_cles <- unique(tolower(cles_recursives(d)))
 cles_interdites <- intersect(toutes_cles, BANNIS)
 noter("C2", "Aucun nom de champ banni dans le JSON",
       if (length(cles_interdites)) "ECHEC" else "OK",
-      paste("cles trouvees :", paste(cles_interdites, collapse = ", ")))
+      paste("clés trouvées :", paste(cles_interdites, collapse = ", ")))
 
 # =============================================================================
 # C3 — Aucun motif de donnee personnelle dans les VALEURS
@@ -134,10 +134,10 @@ vals <- vals[!is.na(vals)]
 
 MOTIFS <- list(
   "adresse de courriel"      = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
-  "numero de telephone"      = "(^|[^0-9])0[1-9]([ .-]?[0-9]{2}){4}([^0-9]|$)",
+  "numéro de téléphone"      = "(^|[^0-9])0[1-9]([ .-]?[0-9]{2}){4}([^0-9]|$)",
   "code postal francilien"   = "(^|[^0-9])(75|77|78|91|92|93|94|95)[0-9]{3}([^0-9]|$)",
   "adresse web"              = "https?://|www\\.",
-  "numero de voie"           = "\\b[0-9]{1,3}(bis|ter)? (rue|avenue|boulevard|impasse|place|chemin|route) "
+  "numéro de voie"           = "\\b[0-9]{1,3}(bis|ter)? (rue|avenue|boulevard|impasse|place|chemin|route) "
 )
 trouves <- character(0)
 for (nom in names(MOTIFS)) {
@@ -149,7 +149,7 @@ for (nom in names(MOTIFS)) {
     trouves <- c(trouves, sprintf("%s : %d valeur(s), ex. %s",
                                   nom, length(hits), paste(head(hits, 3), collapse = " | ")))
 }
-noter("C3", "Aucun motif de donnee personnelle dans les valeurs",
+noter("C3", "Aucun motif de donnée personnelle dans les valeurs",
       if (length(trouves)) "ECHEC" else "OK", paste(trouves, collapse = "\n"))
 
 # =============================================================================
@@ -187,11 +187,11 @@ pb <- character(0)
 n_a <- d$amap$nom_amap; n_f <- d$fermes$nom_ferme
 if (anyDuplicated(n_a)) pb <- c(pb, "noms d'AMAP en double")
 if (anyDuplicated(n_f)) pb <- c(pb, "noms de ferme en double")
-if (!all(grepl("^AMAP ", n_a))) pb <- c(pb, "un nom d'AMAP ne suit pas le schema d'assemblage")
+if (!all(grepl("^AMAP ", n_a))) pb <- c(pb, "un nom d'AMAP ne suit pas le schéma d'assemblage")
 # Aucun nom ne doit contenir de particule patronymique ni de civilite.
 if (any(grepl("\\b(M\\.|Mme|Monsieur|Madame|EARL|GAEC|SCEA|SARL)\\b", c(n_a, n_f), ignore.case = TRUE)))
-  pb <- c(pb, "forme juridique ou civilite detectee dans un nom")
-noter("C5", "Noms uniques, assembles, sans civilite ni forme juridique",
+  pb <- c(pb, "forme juridique ou civilité détectée dans un nom")
+noter("C5", "Noms uniques, assemblés, sans civilité ni forme juridique",
       if (length(pb)) "ECHEC" else "OK", paste(pb, collapse = "\n"))
 
 # =============================================================================
@@ -199,7 +199,7 @@ noter("C5", "Noms uniques, assembles, sans civilite ni forme juridique",
 # =============================================================================
 lat <- c(d$amap$lat, d$fermes$lat); lon <- c(d$amap$lon, d$fermes$lon)
 dehors <- sum(lat < 48.0 | lat > 49.3 | lon < 1.3 | lon > 3.7 | is.na(lat) | is.na(lon))
-noter("C6", "Toutes les coordonnees dans l'emprise francilienne",
+noter("C6", "Toutes les coordonnées dans l'emprise francilienne",
       if (dehors > 0) "ECHEC" else "OK", paste(dehors, "point(s) hors emprise"))
 
 # =============================================================================
@@ -208,8 +208,8 @@ noter("C6", "Toutes les coordonnees dans l'emprise francilienne",
 # Un champ retire de la donnee mais toujours nomme dans l'application resterait
 # une fuite en puissance : il suffirait de rebrancher la base.
 if (!file.exists(f_app)) {
-  noter("C7", "Le code de l'application ne reference aucun champ banni",
-        "NON EXEC", paste("app.R introuvable a", f_app))
+  noter("C7", "Le code de l'application ne référence aucun champ banni",
+        "NON EXEC", paste("app.R introuvable à", f_app))
 } else {
   code <- readLines(f_app, warn = FALSE)
   # On ignore les lignes de commentaire : la mention d'un champ exclu dans une
@@ -229,12 +229,12 @@ if (!file.exists(f_app)) {
     if (length(n)) hits <- c(hits, sprintf("$%s : %d occurrence(s), ligne(s) %s",
                                            champ, length(n), paste(head(n, 5), collapse = ", ")))
   }
-  noter("C7", "Le code de l'application ne reference aucun champ banni",
+  noter("C7", "Le code de l'application ne référence aucun champ banni",
         if (length(hits)) "ECHEC" else "OK", paste(hits, collapse = "\n"))
 }
 
 # =============================================================================
-# C8 — Aucun secret ni connexion base dans le code publie
+# C8 — Aucun secret ni connexion base dans le code publié
 # =============================================================================
 fichiers_code <- c(f_app, f_gen, file.path(racine, "R"))
 fichiers_code <- unique(unlist(lapply(fichiers_code, function(p) {
@@ -258,7 +258,7 @@ for (f in fichiers_code) {
                                                  basename(f), m, paste(head(k, 3), collapse = ", ")))
   }
 }
-noter("C8", "Aucun secret ni connexion base dans le code publie",
+noter("C8", "Aucun secret ni connexion base dans le code publié",
       if (length(secrets)) "ECHEC" else "OK", paste(secrets, collapse = "\n"))
 
 # =============================================================================
@@ -268,10 +268,10 @@ noter("C8", "Aucun secret ni connexion base dans le code publie",
 # hors du depot. Sans lui, le controle sort en NON EXEC : c'est un manque
 # d'information, pas une reussite.
 if (is.na(fichier_noms_reels)) {
-  noter("C9", "Aucun nom genere ne coincide avec un nom reel",
-        "NON EXEC", "Relancer avec --noms-reels=<fichier> (un nom par ligne, hors depot).")
+  noter("C9", "Aucun nom généré ne coïncide avec un nom réel",
+        "NON EXEC", "Relancer avec --noms-reels=<fichier> (un nom par ligne, hors dépôt).")
 } else if (!file.exists(fichier_noms_reels)) {
-  noter("C9", "Aucun nom genere ne coincide avec un nom reel",
+  noter("C9", "Aucun nom généré ne coïncide avec un nom réel",
         "NON EXEC", paste("Fichier introuvable :", fichier_noms_reels))
 } else {
   reels <- readLines(fichier_noms_reels, warn = FALSE, encoding = "UTF-8")
@@ -283,9 +283,9 @@ if (is.na(fichier_noms_reels)) {
   r <- unique(normaliser(reels)); r <- r[nzchar(r)]
   gen <- normaliser(c(n_a, n_f))
   coll <- unique(c(n_a, n_f)[gen %in% r])
-  noter("C9", sprintf("Aucun nom genere ne coincide avec un nom reel (%d references)", length(r)),
+  noter("C9", sprintf("Aucun nom généré ne coïncide avec un nom réel (%d références)", length(r)),
         if (length(coll)) "ECHEC" else "OK",
-        if (length(coll)) sprintf("%d collision(s) : %s\nNe pas corriger a la main : changer GRAINE, regenerer, relancer.",
+        if (length(coll)) sprintf("%d collision(s) : %s\nNe pas corriger à la main : changer GRAINE, régénérer, relancer.",
                                   length(coll), paste(head(coll, 5), collapse = ", ")) else "")
 }
 
@@ -295,14 +295,14 @@ if (is.na(fichier_noms_reels)) {
 cat("\n-------------------------------------------------------------\n")
 etats <- vapply(resultats, function(x) x$etat, character(1))
 n_ok <- sum(etats == "OK"); n_ko <- sum(etats == "ECHEC"); n_ne <- sum(etats == "NON EXEC")
-cat(sprintf(" %d OK   |   %d ECHEC   |   %d NON EXEC\n", n_ok, n_ko, n_ne))
+cat(sprintf(" %d OK   |   %d ÉCHEC   |   %d NON EXEC\n", n_ok, n_ko, n_ne))
 if (n_ko > 0) {
-  cat(" VERDICT : NON PUBLIABLE. Corriger les echecs ci-dessus.\n")
+  cat(" VERDICT : NON PUBLIABLE. Corriger les échecs ci-dessus.\n")
 } else if (n_ne > 0) {
-  cat(" VERDICT : INCOMPLET. Un controle n'a pas pu s'executer ;\n")
-  cat("           ce n'est pas une reussite. Ne pas publier en l'etat.\n")
+  cat(" VERDICT : INCOMPLET. Un contrôle n'a pas pu s'exécuter ;\n")
+  cat("           ce n'est pas une réussite. Ne pas publier en l'état.\n")
 } else {
-  cat(" VERDICT : PUBLIABLE. Tous les controles sont passes.\n")
+  cat(" VERDICT : PUBLIABLE. Tous les contrôles sont passés.\n")
 }
 cat("-------------------------------------------------------------\n")
 quit(status = if (n_ko > 0 || n_ne > 0) 1 else 0)
