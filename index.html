@@ -325,6 +325,11 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
         <p>1 425 diagnostics portaient un code postal erroné. Un filtrage par code postal les aurait perdus. Le géoréférencement par jointure spatiale sur les coordonnées x/y les conserve et leur réattribue une commune — sur une zone à cheval entre Seine-Maritime et Eure, où le découpage administratif ne suffit pas.</p>
       </article>
       <article class="pilier">
+        <div class="num">Distinction</div>
+        <h3>Un diagnostic n'est pas un logement</h3>
+        <p>Un même logement peut porter plusieurs diagnostics — une location en 2014, une vente en 2018, une rénovation en 2023. Compter les documents, c'est surestimer le parc. En ne retenant que le diagnostic le plus récent par logement, le jeu passe de 99 000 à <strong>78 000 lignes</strong> : aucune donnée perdue, des doublons périmés écartés.</p>
+      </article>
+      <article class="pilier">
         <div class="num">Réorientation</div>
         <h3>De l'ACP à l'ACM</h3>
         <p>L'analyse en composantes principales a été abandonnée : les variables étant des parts d'un même total, elles sont mécaniquement corrélées — des données compositionnelles. Bascule vers une analyse des correspondances multiples, puis classification ascendante hiérarchique en quatre classes. Inerties : 16,4 %, 12,8 % et 11,4 % sur les trois premiers axes.</p>
@@ -339,11 +344,11 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
     <div class="figures-duo">
       <figure class="projet-visuel">
         <a href="./assets/dpe-alluvial.png" target="_blank" rel="noopener" title="Ouvrir en pleine résolution"><img src="./assets/dpe-alluvial.png" alt="Diagramme alluvial reliant quatre périodes de construction aux quatre classes de la typologie : les logements d'avant 1948 alimentent presque entièrement la classe des passoires anciennes, ceux d'après 1990 la classe du standard privé." loading="lazy"></a>
-        <figcaption>Diagramme alluvial — l'épaisseur des flux donne le volume de logements. L'âge du bâti détermine massivement la classe.</figcaption>
+        <figcaption>Diagramme alluvial — l'épaisseur des flux donne le volume de logements. L'âge du bâti détermine massivement la classe. Échantillon de 2 126 logements.</figcaption>
       </figure>
       <figure class="projet-visuel">
         <a href="./assets/dpe-bulles.png" target="_blank" rel="noopener" title="Ouvrir en pleine résolution"><img src="./assets/dpe-bulles.png" alt="Graphique en bulles croisant les quatre classes de la typologie et les étiquettes DPE : le standard privé se concentre sur l'étiquette C, le social 1960-80 sur D et E, les passoires anciennes s'étalent jusqu'à G." loading="lazy"></a>
-        <figcaption>Graphique en bulles — la signature énergétique de chaque classe, l'aire étant proportionnelle à l'effectif.</figcaption>
+        <figcaption>Graphique en bulles — la signature énergétique de chaque classe, l'aire étant proportionnelle à l'effectif. Échantillon de 2 126 logements.</figcaption>
       </figure>
     </div>
 
@@ -352,6 +357,7 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
       <ul>
         <li><strong>Erreur écologique.</strong> La base ADEME ne renseigne pas le statut d'occupation. Le caractère « social » ou « privé » est donc porté par la <em>commune</em>, via un seuil de 15 % de logements HLM, et non par le logement. Conclure du profil communal au statut d'un logement individuel serait une inférence abusive. La correction identifiée est une jointure avec le répertoire du parc locatif social.</li>
         <li><strong>Biais de sélection non corrigé.</strong> Un diagnostic naît d'une vente ou d'une mise en location. La couverture mesure donc autant la rotation du marché immobilier que l'état réel du parc — elle varie de 16 % à 91 % selon les communes, pour 56 % en moyenne.</li>
+        <li><strong>Classification sur échantillon.</strong> Faute de puissance machine pour traiter les 78 000 logements du jeu dédoublonné, la classification ascendante hiérarchique a été menée sur un échantillon de 2 126 logements. Les effectifs par classe sont donc des estimations, et aucun intervalle de confiance n'a été calculé sur les proportions qui en découlent.</li>
         <li><strong>Seuil non testé.</strong> Le seuil de 15 % séparant communes « sociales » et « privées » n'a pas fait l'objet d'une analyse de sensibilité.</li>
       </ul>
     </div>
