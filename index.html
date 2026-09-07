@@ -91,10 +91,11 @@ h1 em{font-style:italic;font-weight:500;color:var(--accent)}
    par defaut du navigateur, peu visible sur fond sombre. */
 :focus-visible{outline:3px solid var(--accent-texte);outline-offset:3px;border-radius:2px}
 /* Lien d'evitement : permet de sauter le hero pour aller au contenu. */
-.evitement{position:absolute;left:-9999px;top:0;z-index:9999;
+.evitement{position:fixed;left:0;top:0;z-index:9999;transform:translateY(-130%);
   background:var(--papier);color:var(--encre);padding:12px 20px;
-  font-family:var(--mono);font-size:.78rem;text-decoration:none;border-radius:0 0 3px 0}
-.evitement:focus{left:0}
+  font-family:var(--mono);font-size:.78rem;text-decoration:none;border-radius:0 0 3px 0;
+  transition:transform .2s ease}
+.evitement:focus{transform:translateY(0)}
 
 /* ---------- sections ---------- */
 section{padding:clamp(80px,13vh,150px) 0;position:relative}
@@ -125,7 +126,7 @@ h2 em{font-style:italic;color:var(--accent)}
 .avert b{color:var(--ble);font-weight:600}
 
 /* ---------- chiffres ---------- */
-.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));
   gap:34px;margin-top:64px;padding-top:44px;border-top:1px solid rgba(93,122,107,.28)}
 .chiffre .val{font-family:var(--serif);font-size:clamp(2.4rem,5.4vw,3.9rem);
   line-height:1;color:var(--papier);font-weight:300}
@@ -144,6 +145,15 @@ h2 em{font-style:italic;color:var(--accent)}
 @media(max-width:700px){
   #dpe .projet-visuel figcaption::after{content:" Toucher la figure pour l'ouvrir en grand.";color:var(--papier-doux)}
 }
+.pedago{margin-top:56px;padding-top:34px;border-top:1px solid rgba(93,122,107,.28)}
+.pedago h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:14px}
+.pedago p{color:var(--papier-doux);max-width:72ch}
+.pedago strong{color:var(--papier);font-weight:600}
+.figures-duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+  gap:clamp(20px,3vw,34px);margin-top:32px}
+@media(max-width:700px){
+  .figures-duo .projet-visuel figcaption::after{content:" Toucher pour agrandir.";color:var(--papier-doux)}
+}
 .limites{margin-top:52px;padding-top:34px;border-top:1px solid rgba(93,122,107,.28)}
 .limites h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:18px}
 .limites ul{list-style:none;display:grid;gap:16px}
@@ -155,7 +165,7 @@ h2 em{font-style:italic;color:var(--accent)}
 .credit strong{color:var(--papier-doux);font-style:normal;font-weight:600}
 
 /* ---------- démarche ---------- */
-.piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:2px;margin-top:52px;
+.piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr));gap:2px;margin-top:52px;
   background:rgba(93,122,107,.28)}
 .pilier{background:var(--encre);padding:clamp(26px,3.4vw,38px)}
 .pilier .num{font-family:var(--mono);font-size:.7rem;color:var(--accent-texte);letter-spacing:.15em;margin-bottom:16px}
@@ -169,7 +179,7 @@ h2 em{font-style:italic;color:var(--accent)}
 /* Le trait de grille vient d'une ombre portee sur chaque tuile, pas d'un fond
    de conteneur : sinon les cellules vides de la derniere rangee s'affichent
    comme un bloc clair. */
-.outils{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:1px;
+.outils{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(112px,100%),1fr));gap:1px;
   margin-top:46px}
 .outil{background:var(--encre);padding:26px 10px 18px;display:flex;flex-direction:column;
   align-items:center;gap:13px;transition:background .35s;
@@ -185,7 +195,7 @@ h2 em{font-style:italic;color:var(--accent)}
 /* Sans survol possible (tactile), le nom reste lisible en permanence. */
 @media(hover:none){.outil span{opacity:.8}}
 
-.competences{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:38px;margin-top:54px}
+.competences{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(226px,100%),1fr));gap:38px;margin-top:54px}
 .comp h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent-texte);margin-bottom:17px;padding-bottom:9px;border-bottom:1px solid rgba(93,122,107,.32)}
 .comp ul{list-style:none}
@@ -319,6 +329,22 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
         <h3>De l'ACP à l'ACM</h3>
         <p>L'analyse en composantes principales a été abandonnée : les variables étant des parts d'un même total, elles sont mécaniquement corrélées — des données compositionnelles. Bascule vers une analyse des correspondances multiples, puis classification ascendante hiérarchique en quatre classes. Inerties : 16,4 %, 12,8 % et 11,4 % sur les trois premiers axes.</p>
       </article>
+    </div>
+
+    <div class="pedago">
+      <h3>Du tableau brut au graphique lisible</h3>
+      <p>Une analyse ne vaut que si elle se transmet. Le diagramme alluvial a demandé trois versions avant de dire quelque chose : <strong>tout afficher</strong> — illisible ; <strong>commune vers étiquette</strong> — exact mais trop plat pour révéler un mécanisme ; puis <strong>période de construction vers classe de typologie</strong>, qui montre enfin d'où vient la performance énergétique. C'est cette itération, et non la première idée, qui fait le livrable.</p>
+    </div>
+
+    <div class="figures-duo">
+      <figure class="projet-visuel">
+        <a href="./assets/dpe-alluvial.png" target="_blank" rel="noopener" title="Ouvrir en pleine résolution"><img src="./assets/dpe-alluvial.png" alt="Diagramme alluvial reliant quatre périodes de construction aux quatre classes de la typologie : les logements d'avant 1948 alimentent presque entièrement la classe des passoires anciennes, ceux d'après 1990 la classe du standard privé." loading="lazy"></a>
+        <figcaption>Diagramme alluvial — l'épaisseur des flux donne le volume de logements. L'âge du bâti détermine massivement la classe.</figcaption>
+      </figure>
+      <figure class="projet-visuel">
+        <a href="./assets/dpe-bulles.png" target="_blank" rel="noopener" title="Ouvrir en pleine résolution"><img src="./assets/dpe-bulles.png" alt="Graphique en bulles croisant les quatre classes de la typologie et les étiquettes DPE : le standard privé se concentre sur l'étiquette C, le social 1960-80 sur D et E, les passoires anciennes s'étalent jusqu'à G." loading="lazy"></a>
+        <figcaption>Graphique en bulles — la signature énergétique de chaque classe, l'aire étant proportionnelle à l'effectif.</figcaption>
+      </figure>
     </div>
 
     <div class="limites">
