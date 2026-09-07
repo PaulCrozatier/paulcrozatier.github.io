@@ -21,7 +21,7 @@
     
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Karla:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
   <body>
 <!-- ===================================================================== -->
@@ -43,7 +43,7 @@
       Premier chargement : environ une minute — <span id="pc-elapsed">0</span> s écoulées.
       Les visites suivantes sont instantanées, le navigateur garde tout en cache.
     </p>
-    <img src="../assets/trame-carte.png" alt="Aperçu d'une carte produite par l'application" class="pc-apercu">
+    <img src="../assets/apercu-carte.png" alt="Aperçu d'une carte produite par l'application" class="pc-apercu">
     <p class="pc-note">
       Hébergement statique, aucune donnée transmise. Les 405 AMAP et 400 fermes
       affichées sont <strong>entièrement fictives</strong>, générées à graine fixe.
@@ -52,42 +52,34 @@
   </div>
 </div>
 <style>
-  /* Palette du portfolio : gris papier, encre, rouge. Le rouge fonce sert des
-     que le texte est petit — a 4.79 contre 3.33 pour le rouge vif. */
-  #pc-loader{position:fixed;inset:0;z-index:99999;background:#e9e8e4;color:#0e0e0e;
+  #pc-loader{position:fixed;inset:0;z-index:99999;background:#0c1a1d;color:#f2ece0;
     display:flex;align-items:center;justify-content:center;overflow-y:auto;
-    font-family:"Newsreader",Georgia,serif;font-weight:400;
+    font-family:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:300;
     transition:opacity .6s ease}
-  #pc-loader::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
   #pc-loader.pc-done{opacity:0;pointer-events:none}
-  .pc-inner{max-width:580px;padding:clamp(24px,5vw,40px);margin:auto;position:relative;z-index:1}
-  .pc-kicker{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
-    color:#c9101a;margin:0 0 18px}
-  .pc-inner h1{font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;
-    font-size:clamp(1.9rem,5vw,2.9rem);line-height:.94;letter-spacing:-.01em;margin:0 0 20px;
-    color:#0e0e0e}
-  .pc-inner h1 em{font-style:normal;color:#f4242f}
-  .pc-lead{font-size:1.06rem;line-height:1.6;color:#5a5852;margin:0 0 26px}
-  .pc-lead strong{color:#0e0e0e;font-weight:600}
-  .pc-bar{height:4px;background:#c3c1bb;overflow:hidden;margin-bottom:14px}
-  .pc-bar-fill{height:100%;width:28%;background:#f4242f;
+  .pc-inner{max-width:560px;padding:clamp(24px,5vw,40px);margin:auto}
+  .pc-kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.7rem;
+    letter-spacing:.22em;text-transform:uppercase;color:#5d7a6b;margin:0 0 18px}
+  .pc-inner h1{font-family:"Fraunces",Georgia,serif;font-weight:300;font-size:clamp(1.7rem,4.4vw,2.5rem);
+    line-height:1.1;letter-spacing:-.02em;margin:0 0 20px}
+  .pc-inner h1 em{font-style:italic;color:#d4552e}
+  .pc-lead{font-size:1rem;line-height:1.6;color:#c9c0ae;margin:0 0 26px}
+  .pc-lead strong{color:#f2ece0;font-weight:600}
+  .pc-bar{height:3px;background:rgba(93,122,107,.3);border-radius:2px;overflow:hidden;margin-bottom:14px}
+  .pc-bar-fill{height:100%;width:28%;background:#d4552e;border-radius:2px;
     animation:pc-glisse 1.6s cubic-bezier(.5,0,.5,1) infinite}
   @keyframes pc-glisse{0%{transform:translateX(-110%)}100%{transform:translateX(460%)}}
-  .pc-meta{font-size:.86rem;letter-spacing:.02em;color:#5a5852;margin:0 0 28px;line-height:1.7}
-  .pc-apercu{width:100%;display:block;margin-bottom:24px;opacity:.9;
-    mix-blend-mode:multiply;
-    clip-path:polygon(0 4%,100% 0,100% 96%,0 100%)}
-  .pc-note{font-size:.9rem;line-height:1.6;color:#5a5852;margin:0 0 18px;
-    border-top:1.8px solid #0e0e0e;padding-top:18px}
-  .pc-note strong{color:#c9101a;font-weight:600}
-  .pc-retour{margin:0;font-family:"Anton",Impact,sans-serif;font-size:1.05rem;
-    letter-spacing:.02em;text-transform:uppercase}
-  .pc-retour a{color:#0e0e0e;text-decoration:none;
-    background-image:linear-gradient(#c9101a,#c9101a);background-size:100% 3px;
-    background-repeat:no-repeat;background-position:0 100%;padding-bottom:2px;
-    transition:background-size .28s cubic-bezier(.6,0,.2,1),color .28s}
-  .pc-retour a:hover,.pc-retour a:focus-visible{background-size:100% 100%;color:#e9e8e4}
+  .pc-meta{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;
+    letter-spacing:.04em;color:#5d7a6b;margin:0 0 28px;line-height:1.7}
+  .pc-apercu{width:100%;display:block;border:1px solid rgba(93,122,107,.35);border-radius:3px;
+    margin-bottom:24px;opacity:.55}
+  .pc-note{font-size:.85rem;line-height:1.6;color:#8d9a8b;margin:0 0 18px;
+    border-top:1px solid rgba(93,122,107,.25);padding-top:18px}
+  .pc-note strong{color:#c9a227;font-weight:600}
+  .pc-retour{margin:0;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;
+    letter-spacing:.1em;text-transform:uppercase}
+  .pc-retour a{color:#5d7a6b;text-decoration:none;border-bottom:1px solid transparent;transition:.3s}
+  .pc-retour a:hover{color:#d4552e;border-bottom-color:#d4552e}
   @media(prefers-reduced-motion:reduce){
     .pc-bar-fill{animation:none;width:100%;opacity:.5}
     #pc-loader{transition:none}

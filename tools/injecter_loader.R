@@ -40,8 +40,8 @@ if (!deja) {
   polices <- paste0(
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n',
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n',
-    '<link href="https://fonts.googleapis.com/css2?family=Anton',
-    '&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500',
+    '&family=Karla:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">\n'
   )
   if (!grepl("fonts.googleapis.com", html, fixed = TRUE))
     html <- sub("</head>", paste0(polices, "</head>"), html, fixed = TRUE)
