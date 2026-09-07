@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paul Crozatier — Géomaticien</title>
 <meta name="description" content="Géomaticien junior — SIG, analyse spatiale, diagnostic et observation territoriale, enquête quantitative et qualitative, cartographie web R/Shiny. Démonstration jouable en ligne.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://paulcrozatier.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Paul Crozatier">
+<meta property="og:url" content="https://paulcrozatier.github.io/">
+<meta property="og:title" content="Paul Crozatier — Géomaticien">
+<meta property="og:description" content="Géomaticien junior — SIG, analyse spatiale, diagnostic territorial et cartographie web R/Shiny. Une application jouable directement dans le navigateur.">
+<meta property="og:image" content="https://paulcrozatier.github.io/assets/og-carte.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paul Crozatier, géomaticien — extrait de la carte AMAP Île-de-France">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Karla:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -165,9 +179,12 @@ h2 em{font-style:italic;color:var(--accent)}
 .credit strong{color:var(--papier-doux);font-style:normal;font-weight:600}
 
 /* ---------- démarche ---------- */
-.piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr));gap:2px;margin-top:52px;
-  background:rgba(93,122,107,.28)}
-.pilier{background:var(--encre);padding:clamp(26px,3.4vw,38px)}
+/* Meme regle que pour .outils : le trait de grille vient d'une ombre portee
+   sur chaque tuile, jamais d'un fond de conteneur. Avec trois blocs sur deux
+   colonnes, un fond de conteneur laisserait la cellule vide en aplat clair. */
+.piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr));gap:1px;margin-top:52px}
+.pilier{background:var(--encre);padding:clamp(26px,3.4vw,38px);
+  box-shadow:0 0 0 1px rgba(93,122,107,.28)}
 .pilier .num{font-family:var(--mono);font-size:.7rem;color:var(--accent-texte);letter-spacing:.15em;margin-bottom:16px}
 .pilier h3,.pilier h4{font-family:var(--serif);font-weight:500;font-size:1.32rem;margin-bottom:13px;line-height:1.25}
 .pilier p{font-size:.95rem;color:var(--papier-doux)}
@@ -224,6 +241,20 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 @media(max-width:860px){
   .projet-grille{grid-template-columns:1fr}
   .poste{grid-template-columns:1fr;gap:7px}
+}
+/* Sur telephone, le rythme vertical calcule en vh donne 110 px de respiration
+   de part et d'autre de chaque section : c'est juste sur un ecran large, c'est
+   deux ecrans de defilement a vide sur un 390 px. On le resserre. */
+@media(max-width:620px){
+  section{padding:clamp(52px,7vh,84px) 0}
+  .piliers{margin-top:34px}
+  .competences{gap:28px;margin-top:36px}
+  .chiffres,.figures-duo{margin-top:32px}
+  .outils{margin-top:32px}
+  .pratiques{margin-top:40px;padding-top:28px}
+  .parcours{margin-top:34px}
+  footer{padding:clamp(48px,7vh,76px) 0 38px}
+  .mentions{margin-top:40px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
