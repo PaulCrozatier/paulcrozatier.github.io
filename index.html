@@ -117,6 +117,27 @@ h2 em{font-style:italic;color:var(--accent)}
 .chiffre .lib{font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--trait);margin-top:11px}
 
+/* ---------- fiche etude ---------- */
+#dpe{border-bottom:1px solid rgba(93,122,107,.28)}
+.resultat{margin:42px 0 8px;padding:24px 28px;border-left:3px solid var(--accent);
+  background:rgba(212,85,46,.06)}
+.resultat-cle{font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.75rem);
+  font-style:italic;color:var(--accent);margin-bottom:12px;line-height:1.25}
+.resultat p{color:var(--papier-doux);font-size:1rem}
+.resultat strong{color:var(--papier);font-weight:600}
+@media(max-width:700px){
+  #dpe .projet-visuel figcaption::after{content:" Toucher la figure pour l'ouvrir en grand.";color:var(--papier-doux)}
+}
+.limites{margin-top:52px;padding-top:34px;border-top:1px solid rgba(93,122,107,.28)}
+.limites h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:18px}
+.limites ul{list-style:none;display:grid;gap:16px}
+.limites li{font-size:.95rem;color:var(--papier-doux);padding-left:20px;position:relative;line-height:1.6}
+.limites li::before{content:"—";position:absolute;left:0;color:var(--trait)}
+.limites strong{color:var(--papier);font-weight:600}
+.credit{margin-top:38px;padding-top:20px;border-top:1px solid rgba(93,122,107,.28);
+  font-size:.88rem;color:var(--trait);font-style:italic}
+.credit strong{color:var(--papier-doux);font-style:normal;font-weight:600}
+
 /* ---------- démarche ---------- */
 .piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:2px;margin-top:52px;
   background:rgba(93,122,107,.28)}
@@ -240,9 +261,64 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
   </div>
 </section>
 
+<section id="dpe">
+  <div class="enveloppe">
+    <p class="etiquette">002 &nbsp;/&nbsp; Étude territoriale</p>
+    <h2>Précarité énergétique <em>dans l'agglomération rouennaise</em></h2>
+    <p class="chapeau">Analyse de 94 887 diagnostics de performance énergétique sur les 50 communes de l'unité urbaine de Rouen, croisés avec les données de recensement, pour comprendre comment se construisent les inégalités énergétiques urbaines. Master 2, université Paris 1 Panthéon-Sorbonne.</p>
+
+    <div class="resultat">
+      <p class="resultat-cle">L'hypothèse de départ a été invalidée.</p>
+      <p>Nous partions de l'idée que le parc social, soumis à des obligations de rénovation, serait plus performant que le parc privé. Les résultats disent l'inverse : le parc social est <strong>homogène en étiquette D</strong>, tandis que le parc privé est <strong>polarisé</strong> — il concentre à la fois les meilleures étiquettes et une part importante des passoires thermiques.</p>
+    </div>
+
+    <div class="projet-grille">
+      <figure class="projet-visuel">
+        <a href="./assets/dpe-passoires.png" target="_blank" rel="noopener" title="Ouvrir la figure en pleine résolution"><img src="./assets/dpe-passoires.png" alt="Graphique en barres classant les 50 communes de l'unité urbaine de Rouen selon leur part de passoires énergétiques, de 4,1 % à Canteleu jusqu'à 35,7 % à Martot." loading="lazy"></a>
+        <figcaption>Figure régénérée pour ce portfolio à partir du tableau agrégé de l'étude — source ADEME, base DPE logements existants.</figcaption>
+      </figure>
+      <div>
+        <p>La fracture est territoriale avant d'être sociale : la part de passoires énergétiques va de <strong>4,1 %</strong> à Canteleu jusqu'à <strong>35,7 %</strong> à Martot, un rapport de <strong>1 à 8,7</strong> entre communes d'une même agglomération. À l'échelle de l'unité urbaine, 13,5 % des logements diagnostiqués sont des passoires, contre seulement 2,9 % classés A ou B, et un tiers en étiquette D.</p>
+        <ul class="liste-tech">
+          <li>R</li><li>FactoMineR</li><li>ggalluvial</li><li>sf</li><li>QGIS</li><li>ACM</li><li>CAH</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="piliers">
+      <article class="pilier">
+        <div class="num">Contrainte</div>
+        <h3>Une base trop lourde pour la mémoire</h3>
+        <p>La base ADEME compte plus de neuf millions de lignes et 256 colonnes, et s'enrichit de 35 000 diagnostics par semaine. Impossible à charger directement. Lecture différée du fichier source et extraction sélective d'une douzaine de colonnes, avant tout traitement.</p>
+      </article>
+      <article class="pilier">
+        <div class="num">Arbitrage</div>
+        <h3>Jointure spatiale plutôt qu'attributaire</h3>
+        <p>1 425 diagnostics portaient un code postal erroné. Un filtrage par code postal les aurait perdus. Le géoréférencement par jointure spatiale sur les coordonnées x/y les conserve et leur réattribue une commune — sur une zone à cheval entre Seine-Maritime et Eure, où le découpage administratif ne suffit pas.</p>
+      </article>
+      <article class="pilier">
+        <div class="num">Réorientation</div>
+        <h3>De l'ACP à l'ACM</h3>
+        <p>L'analyse en composantes principales a été abandonnée : les variables étant des parts d'un même total, elles sont mécaniquement corrélées — des données compositionnelles. Bascule vers une analyse des correspondances multiples, puis classification ascendante hiérarchique en quatre classes. Inerties : 16,4 %, 12,8 % et 11,4 % sur les trois premiers axes.</p>
+      </article>
+    </div>
+
+    <div class="limites">
+      <h3>Ce que cette étude ne prouve pas</h3>
+      <ul>
+        <li><strong>Erreur écologique.</strong> La base ADEME ne renseigne pas le statut d'occupation. Le caractère « social » ou « privé » est donc porté par la <em>commune</em>, via un seuil de 15 % de logements HLM, et non par le logement. Conclure du profil communal au statut d'un logement individuel serait une inférence abusive. La correction identifiée est une jointure avec le répertoire du parc locatif social.</li>
+        <li><strong>Biais de sélection non corrigé.</strong> Un diagnostic naît d'une vente ou d'une mise en location. La couverture mesure donc autant la rotation du marché immobilier que l'état réel du parc — elle varie de 16 % à 91 % selon les communes, pour 56 % en moyenne.</li>
+        <li><strong>Seuil non testé.</strong> Le seuil de 15 % séparant communes « sociales » et « privées » n'a pas fait l'objet d'une analyse de sensibilité.</li>
+      </ul>
+    </div>
+
+    <p class="credit">Étude menée avec <strong>Léa Cullin</strong>. Traitement des données, analyses statistiques et cartographie de mon fait ; rédaction du dossier technique du sien.</p>
+  </div>
+</section>
+
 <section id="demarche">
   <div class="enveloppe">
-    <p class="etiquette">002 &nbsp;/&nbsp; Démarche</p>
+    <p class="etiquette">003 &nbsp;/&nbsp; Démarche</p>
     <h2>Publier une démo <em>sans publier de données</em></h2>
     <p class="chapeau">Le jeu réel contenait des coordonnées de contact dispersées dans trois structures et des notes internes rédigées en prose. Le nettoyer de façon fiable s'est révélé impossible. J'ai donc changé d'approche.</p>
 
@@ -268,7 +344,7 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 
 <section id="competences">
   <div class="enveloppe">
-    <p class="etiquette">003 &nbsp;/&nbsp; Compétences</p>
+    <p class="etiquette">004 &nbsp;/&nbsp; Compétences</p>
     <h2>Outils et <em>méthodes</em></h2>
     <p class="chapeau">Les outils avec lesquels je travaille au quotidien.</p>
 
@@ -302,7 +378,7 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 
 <section id="parcours">
   <div class="enveloppe">
-    <p class="etiquette">004 &nbsp;/&nbsp; Parcours</p>
+    <p class="etiquette">005 &nbsp;/&nbsp; Parcours</p>
     <h2>Terrain et <em>technique</em></h2>
     <div class="parcours">
       <article class="poste">
@@ -344,7 +420,7 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 
 <footer>
   <div class="enveloppe">
-    <p class="etiquette">005 &nbsp;/&nbsp; Contact</p>
+    <p class="etiquette">006 &nbsp;/&nbsp; Contact</p>
     <h2>Disponible pour un <em>premier poste</em></h2>
     <p class="chapeau">Géomaticien, chargé de SIG, analyste données spatiales — en Île-de-France.</p>
     <nav class="contact-liens">
