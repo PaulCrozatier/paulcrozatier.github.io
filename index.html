@@ -16,6 +16,12 @@
   --papier-doux:#c9c0ae;
   --trait:#5d7a6b;
   --accent:#d4552e;
+  /* Variantes calculees pour l'accessibilite (WCAG AA, 4.5:1 en petit texte).
+     --trait et --accent sont conserves pour le decor : traits, bordures, aplats,
+     ou le seuil de contraste des textes ne s'applique pas. */
+  --trait-texte:#739483;
+  --accent-texte:#db6f4e;
+  --accent-fond:#c94f29;
   --eau:#4a7f92;
   --ble:#c9a227;
   --serif:"Fraunces",Georgia,serif;
@@ -40,7 +46,7 @@ a{color:inherit}
 /* ---------- étiquettes de section ---------- */
 .etiquette{
   font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--trait);display:flex;align-items:center;gap:14px;margin-bottom:26px;
+  color:var(--trait-texte);display:flex;align-items:center;gap:14px;margin-bottom:26px;
 }
 .etiquette::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--trait),transparent)}
 
@@ -51,7 +57,7 @@ a{color:inherit}
 .courbes path:nth-child(3n){stroke:var(--eau);opacity:.2}
 .hero .enveloppe{position:relative;z-index:1;width:100%}
 .coord{
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--trait);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--trait-texte);
   text-transform:uppercase;margin-bottom:34px;
   animation:monte .9s cubic-bezier(.2,.7,.3,1) both;
 }
@@ -75,10 +81,20 @@ h1 em{font-style:italic;font-weight:500;color:var(--accent)}
   text-decoration:none;border:1px solid var(--trait);border-radius:2px;
   transition:.35s cubic-bezier(.2,.7,.3,1);
 }
-.bouton--plein{background:var(--accent);border-color:var(--accent);color:#fff}
-.bouton--plein:hover{background:transparent;color:var(--accent);transform:translateY(-2px)}
+.bouton--plein{background:var(--accent-fond);border-color:var(--accent-fond);color:#fff}
+.bouton--plein:hover{background:transparent;color:var(--accent-texte);transform:translateY(-2px)}
 .bouton--vide:hover{border-color:var(--papier);background:rgba(242,236,224,.06);transform:translateY(-2px)}
 @keyframes monte{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- accessibilite ---------- */
+/* Aucune regle de focus n'etait definie : au clavier, on dependait du contour
+   par defaut du navigateur, peu visible sur fond sombre. */
+:focus-visible{outline:3px solid var(--accent-texte);outline-offset:3px;border-radius:2px}
+/* Lien d'evitement : permet de sauter le hero pour aller au contenu. */
+.evitement{position:absolute;left:-9999px;top:0;z-index:9999;
+  background:var(--papier);color:var(--encre);padding:12px 20px;
+  font-family:var(--mono);font-size:.78rem;text-decoration:none;border-radius:0 0 3px 0}
+.evitement:focus{left:0}
 
 /* ---------- sections ---------- */
 section{padding:clamp(80px,13vh,150px) 0;position:relative}
@@ -94,7 +110,7 @@ h2 em{font-style:italic;color:var(--accent)}
   box-shadow:0 26px 60px rgba(0,0,0,.45)}
 .projet-visuel img{display:block;width:100%;height:auto}
 .projet-visuel figcaption{
-  font-family:var(--mono);font-size:.68rem;color:var(--trait);padding:11px 15px;
+  font-family:var(--mono);font-size:.68rem;color:var(--trait-texte);padding:11px 15px;
   border-top:1px solid rgba(93,122,107,.3);background:rgba(12,26,29,.7);letter-spacing:.05em;
 }
 .liste-tech{list-style:none;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:8px}
@@ -113,16 +129,16 @@ h2 em{font-style:italic;color:var(--accent)}
   gap:34px;margin-top:64px;padding-top:44px;border-top:1px solid rgba(93,122,107,.28)}
 .chiffre .val{font-family:var(--serif);font-size:clamp(2.4rem,5.4vw,3.9rem);
   line-height:1;color:var(--papier);font-weight:300}
-.chiffre .val span{font-size:.42em;color:var(--accent);margin-left:3px}
+.chiffre .val span{font-size:.42em;color:var(--accent-texte);margin-left:3px}
 .chiffre .lib{font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--trait);margin-top:11px}
+  text-transform:uppercase;color:var(--trait-texte);margin-top:11px}
 
 /* ---------- fiche etude ---------- */
 #dpe{border-bottom:1px solid rgba(93,122,107,.28)}
 .resultat{margin:42px 0 8px;padding:24px 28px;border-left:3px solid var(--accent);
   background:rgba(212,85,46,.06)}
 .resultat-cle{font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.75rem);
-  font-style:italic;color:var(--accent);margin-bottom:12px;line-height:1.25}
+  font-style:italic;color:var(--accent-texte);margin-bottom:12px;line-height:1.25}
 .resultat p{color:var(--papier-doux);font-size:1rem}
 .resultat strong{color:var(--papier);font-weight:600}
 @media(max-width:700px){
@@ -132,17 +148,17 @@ h2 em{font-style:italic;color:var(--accent)}
 .limites h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:18px}
 .limites ul{list-style:none;display:grid;gap:16px}
 .limites li{font-size:.95rem;color:var(--papier-doux);padding-left:20px;position:relative;line-height:1.6}
-.limites li::before{content:"—";position:absolute;left:0;color:var(--trait)}
+.limites li::before{content:"—";position:absolute;left:0;color:var(--trait-texte)}
 .limites strong{color:var(--papier);font-weight:600}
 .credit{margin-top:38px;padding-top:20px;border-top:1px solid rgba(93,122,107,.28);
-  font-size:.88rem;color:var(--trait);font-style:italic}
+  font-size:.88rem;color:var(--trait-texte);font-style:italic}
 .credit strong{color:var(--papier-doux);font-style:normal;font-weight:600}
 
 /* ---------- démarche ---------- */
 .piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:2px;margin-top:52px;
   background:rgba(93,122,107,.28)}
 .pilier{background:var(--encre);padding:clamp(26px,3.4vw,38px)}
-.pilier .num{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.15em;margin-bottom:16px}
+.pilier .num{font-family:var(--mono);font-size:.7rem;color:var(--accent-texte);letter-spacing:.15em;margin-bottom:16px}
 .pilier h3{font-family:var(--serif);font-weight:500;font-size:1.32rem;margin-bottom:13px;line-height:1.25}
 .pilier p{font-size:.95rem;color:var(--papier-doux)}
 
@@ -164,14 +180,14 @@ h2 em{font-style:italic;color:var(--accent)}
   transition:background .35s,transform .35s cubic-bezier(.2,.7,.3,1)}
 .outil:hover .marque{background:var(--accent);transform:translateY(-4px)}
 .outil span{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--trait);text-align:center;opacity:0;transition:opacity .3s}
+  color:var(--trait-texte);text-align:center;opacity:0;transition:opacity .3s}
 .outil:hover span{opacity:1;color:var(--papier-doux)}
 /* Sans survol possible (tactile), le nom reste lisible en permanence. */
 @media(hover:none){.outil span{opacity:.8}}
 
 .competences{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:38px;margin-top:54px}
 .comp h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:17px;padding-bottom:9px;border-bottom:1px solid rgba(93,122,107,.32)}
+  color:var(--accent-texte);margin-bottom:17px;padding-bottom:9px;border-bottom:1px solid rgba(93,122,107,.32)}
 .comp ul{list-style:none}
 .comp li{font-size:.94rem;padding:5px 0;color:var(--papier-doux)}
 
@@ -180,15 +196,15 @@ h2 em{font-style:italic;color:var(--accent)}
 .poste{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:29px 0;
   border-bottom:1px solid rgba(93,122,107,.28);transition:.3s}
 .poste:hover{background:rgba(93,122,107,.05)}
-.poste .date{font-family:var(--mono);font-size:.72rem;color:var(--trait);letter-spacing:.07em;padding-top:5px}
+.poste .date{font-family:var(--mono);font-size:.72rem;color:var(--trait-texte);letter-spacing:.07em;padding-top:5px}
 .poste h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;margin-bottom:5px}
-.poste .lieu{font-size:.87rem;color:var(--accent);margin-bottom:9px}
+.poste .lieu{font-size:.87rem;color:var(--accent-texte);margin-bottom:9px}
 .poste p{font-size:.93rem;color:var(--papier-doux)}
 
 /* ---------- pied ---------- */
 footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107,.28)}
 .contact-liens{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
-.mentions{margin-top:60px;font-family:var(--mono);font-size:.67rem;color:var(--trait);
+.mentions{margin-top:60px;font-family:var(--mono);font-size:.67rem;color:var(--trait-texte);
   letter-spacing:.05em;line-height:1.9}
 
 @media(max-width:860px){
@@ -202,6 +218,8 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 </style>
 </head>
 <body>
+
+<a class="evitement" href="#projet">Aller au contenu</a>
 
 <header class="hero">
   <svg class="courbes" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
