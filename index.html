@@ -172,6 +172,7 @@ h2 em{font-style:italic;color:var(--accent)}
 .resultat p{color:var(--papier-doux);font-size:1rem}
 .resultat strong{color:var(--papier);font-weight:600}
 @media(max-width:700px){
+  #projet .projet-visuel figcaption::after{content:" Toucher la carte pour l'ouvrir en grand.";color:var(--papier-doux)}
   #dpe .projet-visuel figcaption::after{content:" Toucher la figure pour l'ouvrir en grand.";color:var(--papier-doux)}
 }
 .pedago{margin-top:56px;padding-top:34px;border-top:1px solid rgba(93,122,107,.28)}
@@ -283,6 +284,28 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
   footer{padding:clamp(48px,7vh,76px) 0 38px}
   .mentions{margin-top:40px}
 }
+/* ---------- passe mobile : plancher typographique sous 940 px ----------
+   Ces libelles sont en rem, donc de taille constante quelle que soit la
+   largeur. Mesures a 390 px, ils tombaient entre 9,6 et 11,5 px — lisibles
+   a la souris, plus au pouce. Aucun ne descend desormais sous 12 px. */
+@media(max-width:940px){
+  .coord{font-size:.78rem}
+  .etiquette{font-size:.78rem}
+  .pilier .num{font-size:.78rem}
+  .preuve b{font-size:.76rem}
+  .projet-visuel figcaption{font-size:.78rem}
+  .comp h3{font-size:.78rem}
+  .outil span{font-size:.75rem}
+  .chiffre .lib{font-size:.75rem}
+  .poste .date{font-size:.78rem}
+  .liste-tech li{font-size:.77rem}
+  .mentions{font-size:.75rem}
+  /* Les liens de preuve sont en pleine phrase : l'exception inline de
+     WCAG 2.5.8 s'applique, il n'y a pas de non-conformite. On elargit
+     malgre tout la zone de contact, qui ne faisait que 16 px de haut. */
+  .preuve a{padding-block:4px}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -386,7 +409,7 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 
     <div class="projet-grille">
       <figure class="projet-visuel">
-        <img src="./assets/apercu-carte.png" alt="Carte de l'Île-de-France produite par l'application : aires d'alimentation de captage en bleu, AMAP et fermes localisées, échelle et flèche nord." loading="lazy">
+        <a href="./assets/apercu-carte.png" target="_blank" rel="noopener" title="Ouvrir la carte en pleine résolution"><img src="./assets/apercu-carte.png" alt="Carte de l'Île-de-France produite par l'application : aires d'alimentation de captage en bleu, AMAP et fermes localisées, échelle et flèche nord." loading="lazy"></a>
         <figcaption>Export cartographique produit par l'application — habillage, zonages et légende générés par le module R.</figcaption>
       </figure>
 
