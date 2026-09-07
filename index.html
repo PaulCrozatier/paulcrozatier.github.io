@@ -204,6 +204,18 @@ h2 em{font-style:italic;color:var(--accent)}
 .pilier h3,.pilier h4{font-family:var(--serif);font-weight:500;font-size:1.32rem;margin-bottom:13px;line-height:1.25}
 .pilier p{font-size:.95rem;color:var(--papier-doux)}
 
+/* Preuve adossee a chaque posture. Ces competences n'ont pas d'artefact
+   visuel ; a defaut d'image, on donne un lien verifiable — et quand il n'y en
+   a pas, on l'ecrit plutot que de meubler. */
+.pilier .preuve,.preuve{margin-top:17px;padding-top:14px;border-top:1px solid rgba(93,122,107,.28);
+  font-size:.83rem;line-height:1.72;color:var(--trait-texte)}
+.preuve b{display:block;font-family:var(--mono);font-size:.68rem;font-weight:400;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--accent-texte);margin-bottom:7px}
+.preuve.sans b{color:var(--trait-texte)}
+.preuve a{color:var(--papier-doux);text-decoration:none;
+  border-bottom:1px solid var(--accent);transition:background .25s,color .25s}
+.preuve a:hover,.preuve a:focus-visible{color:var(--papier);background:rgba(212,85,46,.14)}
+
 /* ---------- compétences ---------- */
 /* Outils : logos monochromes, teintes par masque CSS pour rester dans la
    palette du site. Le nom n'apparait qu'au survol — et reste toujours lu par
@@ -310,6 +322,62 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
 </header>
 
 <main>
+<section id="posture">
+  <div class="enveloppe">
+    <p class="etiquette">Ce que je fais, concrètement</p>
+    <h2>Faire tenir ensemble <em>la technique et les gens</em></h2>
+    <p class="chapeau">Trois compétences qui ne produisent aucune image, et qui décident
+      pourtant du sort d'un projet : écrire ce qui devra être repris sans moi, contrôler
+      ce qu'on me livre, et faire trancher ce qui bloque.</p>
+
+    <div class="piliers">
+      <article class="pilier">
+        <div class="num">Rédiger</div>
+        <h3>Un document qu'on reprend sans moi</h3>
+        <p>En fin de stage, j'ai rédigé le guide de reprise de l'application : schéma de
+        la chaîne de données, fonctionnement du pipeline de mise à jour, pièges connus,
+        limites de la donnée, et une table de premiers réflexes en cas de panne. Écrit
+        pour quelqu'un qui n'a pas participé au projet et doit pouvoir le reprendre seul.</p>
+        <p class="preuve"><b>Trace vérifiable</b>
+        Le guide du stage n'est pas publiable — il décrit une infrastructure interne.
+        Mais ce dépôt est écrit dans le même esprit : son
+        <a href="https://github.com/PaulCrozatier/paulcrozatier.github.io/blob/main/README.md">README</a> documente l'architecture, la chaîne
+        de données et la procédure de mise à jour sur plus de 240 lignes.</p>
+      </article>
+
+      <article class="pilier">
+        <div class="num">Contrôler</div>
+        <h3>Vérifier ce que livre un prestataire</h3>
+        <p>Les données venaient d'un prestataire externe, avec des délais de réponse longs
+        qu'il fallait anticiper. Deux types d'exports coexistaient, dont un seul était
+        exploitable. Plutôt que de m'en remettre à la vigilance de l'opérateur, j'ai
+        inscrit le contrôle dans le script d'import : il refuse tout export non conforme
+        et journalise chaque étape.</p>
+        <p class="preuve"><b>Trace vérifiable</b>
+        Le même réflexe s'applique ici : neuf
+        <a href="https://github.com/PaulCrozatier/paulcrozatier.github.io/blob/main/app/R/verifier_donnees_demo.R">contrôles bloquants</a>
+        s'exécutent avant chaque publication et refusent de laisser passer un jeu non
+        conforme. Leur
+        <a href="https://github.com/PaulCrozatier/paulcrozatier.github.io/blob/main/app/verification_sortie.txt">sortie est versionnée</a>
+        dans le dépôt, pas seulement affichée une fois.</p>
+      </article>
+
+      <article class="pilier">
+        <div class="num">Faire parler</div>
+        <h3>Des interlocuteurs qui ne parlent pas la même langue</h3>
+        <p>Conduite de besoins auprès d'équipes salariées et bénévoles, atelier collectif
+        pour faire trancher par le métier une définition qui faisait diverger les chiffres,
+        passation à l'administrateur système. Et au Mexique, des entretiens semi-directifs
+        en espagnol auprès d'autorités locales et d'associations de terrain.</p>
+        <p class="preuve sans"><b>Pas d'artefact publiable</b>
+        C'est la seule des trois : le référentiel de règles de gestion et le compte rendu
+        d'atelier appartiennent à la structure. Ce qui en reste visible ici est le
+        problème que l'atelier a résolu, raconté en <a href="#projet">section 001</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="projet">
   <div class="enveloppe">
     <p class="etiquette">001 &nbsp;/&nbsp; Projet phare</p>
@@ -491,27 +559,6 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
         <li>Français — natif</li><li>Anglais — courant</li><li>Espagnol — courant</li></ul></div>
     </div>
   </div>
-
-    <div class="pratiques">
-      <h3>En pratique</h3>
-      <div class="piliers">
-        <article class="pilier">
-          <div class="num">Rédiger</div>
-          <h4>Un document qu'on reprend sans moi</h4>
-          <p>En fin de stage, j'ai rédigé le guide de reprise de l'application : schéma de la chaîne de données, fonctionnement du pipeline de mise à jour, pièges connus, limites de la donnée, et une table de premiers réflexes en cas de panne. Écrit pour quelqu'un qui n'a pas participé au projet et doit pouvoir le reprendre seul.</p>
-        </article>
-        <article class="pilier">
-          <div class="num">Contrôler</div>
-          <h4>Vérifier ce que livre un prestataire</h4>
-          <p>Les données venaient d'un prestataire externe, avec des délais de réponse longs qu'il fallait anticiper. Deux types d'exports coexistaient, dont un seul était exploitable. Plutôt que de m'en remettre à la vigilance de l'opérateur, j'ai inscrit le contrôle dans le script d'import : il refuse tout export non conforme et journalise chaque étape.</p>
-        </article>
-        <article class="pilier">
-          <div class="num">Faire parler</div>
-          <h4>Des interlocuteurs qui ne parlent pas la même langue</h4>
-          <p>Conduite de besoins auprès d'équipes salariées et bénévoles, atelier collectif pour faire trancher par le métier une définition qui faisait diverger les chiffres, passation à l'administrateur système. Et au Mexique, des entretiens semi-directifs en espagnol auprès d'autorités locales et d'associations de terrain.</p>
-        </article>
-      </div>
-    </div>
   </section>
 
 <section id="parcours">
