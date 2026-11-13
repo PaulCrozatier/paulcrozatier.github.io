@@ -87,7 +87,18 @@ h1 em{font-style:italic;font-weight:500;color:var(--accent)}
   margin-top:32px;line-height:1.5;
   animation:monte 1s cubic-bezier(.2,.7,.3,1) .22s both;
 }
-.hero-liens{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px;
+.dispo{
+  display:flex;align-items:baseline;gap:12px;max-width:52ch;margin-top:22px;
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;line-height:1.6;color:var(--papier);
+  animation:monte 1s cubic-bezier(.2,.7,.3,1) .28s both;
+}
+.dispo-point{flex:none;width:9px;height:9px;border-radius:50%;background:var(--accent);transform:translateY(-1px)}
+.note-demo{
+  max-width:60ch;margin-top:18px;font-size:.82rem;line-height:1.55;color:var(--trait-texte);
+  animation:monte 1s cubic-bezier(.2,.7,.3,1) .4s both;
+}
+.note-demo a{color:var(--papier-doux)}
+.hero-liens{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;
   animation:monte 1s cubic-bezier(.2,.7,.3,1) .34s both}
 .bouton{
   display:inline-flex;align-items:center;gap:11px;padding:15px 27px;
@@ -336,11 +347,14 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
     <p class="coord">48.8566° N &nbsp;·&nbsp; 2.3522° E &nbsp;·&nbsp; Île-de-France</p>
     <h1>Paul<br>Crozatier<em>.</em></h1>
     <p class="sous-titre">Géomaticien junior. Je conçois des <strong>outils cartographiques</strong> et je mène des <strong>études territoriales fondées sur données</strong> — du diagnostic et de l'enquête jusqu'à l'application livrée.</p>
+    <p class="dispo"><span class="dispo-point" aria-hidden="true"></span>Disponible immédiatement pour un premier poste en Île-de-France — géomaticien, chargé de SIG, analyste de données spatiales.</p>
     <nav class="hero-liens">
       <a class="bouton bouton--plein" href="./demo/">Lancer la démonstration →</a>
       <a class="bouton bouton--vide" href="#projet">Voir le projet</a>
       <a class="bouton bouton--vide" href="./assets/cv-paul-crozatier.pdf" type="application/pdf">CV (PDF)</a>
+      <a class="bouton bouton--vide" href="mailto:paul.crozatier@outlook.com">Me contacter</a>
     </nav>
+    <p class="note-demo">La démonstration charge le moteur R dans le navigateur : comptez 30 secondes à 2 minutes au premier lancement. Un aperçu immédiat est disponible dans <a href="#projet">la présentation du projet</a>.</p>
   </div>
 </header>
 
@@ -561,10 +575,11 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
       <div class="outil" style="--ic:url('./assets/logos/arcgis.svg')"><i class="marque"></i><span>ArcGIS Pro</span></div>
       <div class="outil" style="--ic:url('./assets/logos/r.svg')"><i class="marque"></i><span>R</span></div>
       <div class="outil" style="--ic:url('./assets/logos/rstudio.svg')"><i class="marque"></i><span>RStudio</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/r.svg')"><i class="marque"></i><span>Shiny</span></div>
       <div class="outil" style="--ic:url('./assets/logos/python.svg')"><i class="marque"></i><span>Python</span></div>
       <div class="outil" style="--ic:url('./assets/logos/pandas.svg')"><i class="marque"></i><span>pandas</span></div>
       <div class="outil" style="--ic:url('./assets/logos/geopandas.svg')"><i class="marque"></i><span>GeoPandas</span></div>
-      <div class="outil" style="--ic:url('./assets/logos/postgresql.svg')"><i class="marque"></i><span>PostGIS</span></div>
+      <div class="outil" style="--ic:url('./assets/logos/postgresql.svg')"><i class="marque"></i><span>SQL / PostGIS</span></div>
       <div class="outil" style="--ic:url('./assets/logos/leaflet.svg')"><i class="marque"></i><span>Leaflet</span></div>
       <div class="outil" style="--ic:url('./assets/logos/javascript.svg')"><i class="marque"></i><span>JavaScript</span></div>
       <div class="outil" style="--ic:url('./assets/logos/html5.svg')"><i class="marque"></i><span>HTML / CSS</span></div>
@@ -593,8 +608,8 @@ footer{padding:clamp(64px,9vh,110px) 0 46px;border-top:1px solid rgba(93,122,107
         <div class="date">Mars — Juillet 2026</div>
         <div>
           <h3>Stagiaire géomaticien — géovisualisation &amp; données territoriales</h3>
-          <p class="lieu">Réseau AMAP Île-de-France</p>
-          <p>Conduite de besoins auprès des équipes, collecte et structuration de données multi-sources sur 370 groupes et 400 fermes à l'échelle régionale, co-conception de l'architecture de base de données, développement de l'interface cartographique interactive.</p>
+          <p class="lieu">Réseau AMAP Île-de-France — Montreuil (93)</p>
+          <p>Conduite de besoins auprès des équipes, collecte et structuration de données multi-sources sur 370 groupes et 400 fermes à l'échelle régionale, co-conception de l'architecture de base de données, développement et mise en production d'une application cartographique interactive en R/Shiny, puis documentation de reprise et passation.</p>
         </div>
       </article>
       <article class="poste">
