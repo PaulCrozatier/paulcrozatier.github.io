@@ -86,7 +86,7 @@ sur la carte, commune et code postal n'apportent rien à la démonstration et re
 | | Production | Démonstration |
 |---|---|---|
 | Source de données | MariaDB, 4 vues SQL versionnées | `data/donnees_demo.json`, généré |
-| Volumes | 405 AMAP, 608 fermes, 1 692 partenariats actifs | 405 AMAP, 400 fermes, 1 903 partenariats actifs |
+| Volumes | 370 AMAP actives (405 enregistrées), ~400 fermes en Île-de-France (608 au total), 1 692 partenariats actifs | 405 AMAP (actives et inactives), 400 fermes, 1 903 partenariats actifs |
 | Emprise des fermes | 392 en Île-de-France, 216 hors région | toutes en Île-de-France |
 | Recherche plein texte | nom, commune, code postal, lieu | nom uniquement |
 | Panneau de détail | + adresse, téléphone, courriel | statut, productions, partenaires |
