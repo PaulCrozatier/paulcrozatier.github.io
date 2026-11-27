@@ -183,6 +183,12 @@ h3{font-size:1.06rem;font-weight:600;line-height:1.35}
   background:rgba(0,0,0,.45);padding:2px 8px;border-radius:999px}
 .liens{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:.92rem}
 .petit{font-size:.84rem;color:var(--texte-pale)}
+.rgpd{margin-top:16px;padding:14px 16px;border-left:3px solid var(--accent);background:var(--fond-doux);border-radius:0 8px 8px 0;font-size:.92rem}
+.rgpd h4{font-size:.92rem;font-weight:600;margin-bottom:4px}
+.rgpd ul{padding-left:18px}
+.rgpd li{margin-top:4px;color:var(--texte-doux)}
+.rgpd li strong{color:var(--texte)}
+.rgpd li::marker{color:var(--accent)}
 
 /* ---------- compétences ---------- */
 /* Logos monochromes teintés par masque CSS. Le nom n'apparaît qu'au survol,
@@ -308,6 +314,14 @@ footer{background:var(--fond-doux);padding:44px 0 36px}
         <div class="chiffre"><div class="val">5</div><div class="lib">salariés formés</div></div>
       </div>
       <ul class="tags"><li>R</li><li>Shiny</li><li>Leaflet</li><li>sf</li><li>PostGIS</li><li>MariaDB</li><li>SQL</li><li>OSRM</li></ul>
+      <div class="rgpd">
+        <h4>Données personnelles : ce que la démo publique a demandé</h4>
+        <ul>
+          <li><strong>Générer plutôt qu'expurger.</strong> Le nettoyage de la base réelle a échoué : contacts répartis dans trois tables, notes en texte libre qu'aucune expression régulière ne filtre. Le jeu publié est entièrement généré, sans aucune donnée réelle en entrée.</li>
+          <li><strong>Pseudonymiser n'est pas anonymiser.</strong> Une ferme géolocalisée reste réidentifiable par sa commune, même sans son nom. Commune et code postal sont exclus des données et du code.</li>
+          <li><strong>Contrôles bloquants.</strong> 9 vérifications avant publication (liste blanche de champs, motifs de données personnelles, secrets, collision avec des noms réels). Un contrôle non exécuté bloque la publication.</li>
+        </ul>
+      </div>
       <p class="liens">
         <a href="./demo/">Essayer la démo</a>
         <a href="https://github.com/PaulCrozatier/paulcrozatier.github.io" target="_blank" rel="noopener">Code source</a>
