@@ -249,7 +249,7 @@ footer{background:var(--fond-doux);padding:44px 0 36px}
           <li><strong>6 entretiens</strong> de recueil des besoins, 1 atelier métier pour trancher un conflit de données, <strong>5 salariés formés</strong>.</li>
           <li>Données fiabilisées : nettoyage, <strong>géocodage</strong>, contrôle qualité, mise à jour mensuelle filtrée RGPD.</li>
           <li><strong>4 vues SQL versionnées (MariaDB)</strong> : la base de production du prestataire reste intacte.</li>
-          <li>Traitements <strong>PostGIS</strong> (zonages, distances) sur fond <strong>BD TOPO</strong>.</li>
+          <li>Typologie des groupes par zonage environnemental (AAC, ZPA) et distances groupes–fermes calculées en <strong>R (sf)</strong> sur fond <strong>BD TOPO</strong>.</li>
           <li>Mise en production sur Linux Debian (nginx, cron), guide de reprise, passation.</li>
         </ul>
       </div>
@@ -287,7 +287,7 @@ footer{background:var(--fond-doux);padding:44px 0 36px}
         <div class="chiffre"><div class="val">4</div><div class="lib">vues SQL versionnées</div></div>
         <div class="chiffre"><div class="val">5</div><div class="lib">salariés formés</div></div>
       </div>
-      <ul class="tags"><li>R</li><li>Shiny</li><li>Leaflet</li><li>sf</li><li>PostGIS</li><li>MariaDB</li><li>SQL</li><li>OSRM</li></ul>
+      <ul class="tags"><li>R</li><li>Shiny</li><li>Leaflet</li><li>sf</li><li>MariaDB</li><li>SQL</li><li>OSRM</li></ul>
       <p class="liens">
         <a href="./demo/">Essayer la démo</a>
         <a href="https://github.com/PaulCrozatier/paulcrozatier.github.io" target="_blank" rel="noopener">Code source</a>
@@ -303,10 +303,8 @@ footer{background:var(--fond-doux);padding:44px 0 36px}
     <h2>Compétences</h2>
     <div class="outils">
       <div class="outil" style="--ic:url('./assets/logos/qgis.svg')"><i class="marque"></i><span>QGIS</span></div>
-      <div class="outil" style="--ic:url('./assets/logos/arcgis.svg')"><i class="marque"></i><span>ArcGIS Pro</span></div>
       <div class="outil" style="--ic:url('./assets/logos/postgresql.svg')"><i class="marque"></i><span>SQL / PostGIS</span></div>
       <div class="outil" style="--ic:url('./assets/logos/r.svg')"><i class="marque"></i><span>R</span></div>
-      <div class="outil" style="--ic:url('./assets/logos/rstudio.svg')"><i class="marque"></i><span>RStudio</span></div>
       <div class="outil" style="--ic:url('./assets/logos/r.svg')"><i class="marque"></i><span>Shiny</span></div>
       <div class="outil" style="--ic:url('./assets/logos/leaflet.svg')"><i class="marque"></i><span>Leaflet</span></div>
       <div class="outil" style="--ic:url('./assets/logos/python.svg')"><i class="marque"></i><span>Python</span></div>
@@ -316,10 +314,9 @@ footer{background:var(--fond-doux);padding:44px 0 36px}
       <div class="outil" style="--ic:url('./assets/logos/html5.svg')"><i class="marque"></i><span>HTML / CSS</span></div>
       <div class="outil" style="--ic:url('./assets/logos/git.svg')"><i class="marque"></i><span>Git</span></div>
       <div class="outil" style="--ic:url('./assets/logos/adobeillustrator.svg')"><i class="marque"></i><span>Illustrator</span></div>
-      <div class="outil" style="--ic:url('./assets/logos/inkscape.svg')"><i class="marque"></i><span>Inkscape</span></div>
     </div>
     <div class="competences">
-      <div><h3>SIG</h3><p>QGIS, ArcGIS Pro, PostGIS, BD TOPO, cadastre, géocodage, télédétection, sémiologie graphique</p></div>
+      <div><h3>SIG</h3><p>QGIS, ArcGIS Pro, PostGIS, BD TOPO, cadastre, géocodage, télédétection, sémiologie graphique, Illustrator, Inkscape</p></div>
       <div><h3>Données</h3><p>SQL (PostgreSQL, MariaDB), R, Python (pandas, GeoPandas), Excel avancé</p></div>
       <div><h3>Webmapping</h3><p>R Shiny, Leaflet, GeoJSON, JavaScript, HTML/CSS, Linux, Git</p></div>
       <div><h3>Langues</h3><p>Français, anglais, espagnol (courants)</p></div>
